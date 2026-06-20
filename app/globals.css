@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: "Inter", system-ui, sans-serif;
+    --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-ink antialiased;
+    font-feature-settings: "ss01", "cv01", "cv11";
+  }
+
+  ::selection {
+    @apply bg-ink text-white;
+  }
+
+  /* Refined scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-white;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-line rounded-full;
+    border: 3px solid white;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-charcoal-muted;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-container px-6 md:px-10 lg:px-16;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-charcoal-muted;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-8 bg-sand-400;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 text-sm font-medium transition-all duration-300 ease-premium;
+  }
+
+  .btn-primary {
+    @apply btn bg-ink px-7 py-4 text-white hover:bg-charcoal;
+  }
+
+  .btn-outline {
+    @apply btn border border-ink/15 px-7 py-4 text-ink hover:border-ink hover:bg-ink hover:text-white;
+  }
+
+  .btn-light {
+    @apply btn bg-white px-7 py-4 text-ink hover:bg-sand-100;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-white/30 px-7 py-4 text-white hover:bg-white hover:text-ink;
+  }
+
+  .link-underline {
+    @apply relative inline-flex w-fit items-center gap-1.5 text-sm font-medium text-ink after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-ink after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-premium;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .grain {
+    background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.04) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+}
