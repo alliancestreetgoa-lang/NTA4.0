@@ -8,6 +8,11 @@ const nextConfig = {
   output: "export",
   reactStrictMode: true,
   basePath,
+  // Expose the base path to client code so local assets (e.g. the logo)
+  // can be referenced with the correct prefix under GitHub Pages.
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   trailingSlash: true,
   images: {
     // Static export cannot use the Next.js image optimizer.
