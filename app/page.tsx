@@ -233,10 +233,10 @@ export default function HomePage() {
                           strokeWidth={1.5}
                         />
                         <div>
-                          <div className="font-display text-base font-semibold">
+                          <div className="font-display text-base font-semibold [text-shadow:0_1px_8px_rgba(10,10,11,0.7)]">
                             {f.title}
                           </div>
-                          <div className="mt-1 text-sm leading-relaxed text-white/55">
+                          <div className="mt-1 text-sm leading-relaxed text-white/80 [text-shadow:0_1px_8px_rgba(10,10,11,0.7)]">
                             {f.desc}
                           </div>
                         </div>

@@ -523,6 +523,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "~18% S · ~23% Ca",
     tier: "Secondary",
     image: FIMG("photo-1632858918575-f865ab926cc0"),
+    poster: "/fertilizers/gypsum.png",
     uses:
       "A key sulphur source. Corrects widespread sulphur deficiency, improves soil structure, and helps reclaim saline-alkali and coastal soils.",
     crops: ["Rice", "Oilseeds", "Coastal/Saline Soils"],
@@ -533,6 +534,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "Mono 33% Zn · Hepta 21% Zn",
     tier: "Micronutrient",
     image: FIMG("photo-1608797179015-0f64ad48744b"),
+    poster: "/fertilizers/zinc-sulphate.png",
     uses:
       "Corrects zinc deficiency — the cause of 'khaira' disease in rice — one of the most common micronutrient deficiencies in intensively cropped soils. Essential for chlorophyll formation and healthy tillering.",
     crops: ["Rice", "Maize", "Wheat", "Vegetables"],
@@ -543,6 +545,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "~17–20% B",
     tier: "Micronutrient",
     image: FIMG("photo-1625758477951-d9b245b1a79f"),
+    poster: "/fertilizers/boron.png",
     uses:
       "Corrects boron deficiency that limits flowering and seed/fruit set. Critical for mustard, vegetables and pulses on boron-poor soils.",
     crops: ["Mustard", "Cauliflower", "Pulses", "Fruit"],
@@ -553,6 +556,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "~9.8% Mg · +13% S",
     tier: "Micronutrient",
     image: FIMG("photo-1612708015264-5f13c037c9cd"),
+    poster: "/fertilizers/magnesium-sulphate.png",
     uses:
       "Supplies magnesium for chlorophyll and sulphur for protein synthesis. Corrects magnesium deficiency under intensive cropping and on light, sandy soils.",
     crops: ["Vegetables", "Potato", "Fruit", "Rice"],
@@ -563,6 +567,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "e.g. 15-15-15 · +S",
     tier: "Secondary",
     image: FIMG("photo-1537155023352-cda15844e56d"),
+    poster: "/fertilizers/npks.png",
     uses:
       "Balanced, ready-to-use blends delivering nitrogen, phosphorus, potassium and sulphur in one application — convenient for balanced fertilisation across diverse crops.",
     crops: ["Rice", "Vegetables", "Maize", "Horticulture"],
@@ -573,6 +578,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "12-61-0 · N + P",
     tier: "Secondary",
     image: FIMG("photo-1774351922689-896a9340aa7b"),
+    poster: "/fertilizers/map.png",
     uses:
       "The highest-analysis phosphate fertilizer, with a starter dose of nitrogen. Excellent as a basal application to drive vigorous early root and shoot growth.",
     crops: ["Rice", "Potato", "Maize", "Vegetables"],
@@ -583,6 +589,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "20-20-0 · +13% S",
     tier: "Secondary",
     image: FIMG("photo-1537870148480-ed9ff56a8148"),
+    poster: "/fertilizers/nps.png",
     uses:
       "Supplies nitrogen, phosphorus and sulphur together — well suited to sulphur-deficient soils and to oilseeds and pulses that need extra sulphur.",
     crops: ["Mustard", "Pulses", "Rice", "Wheat"],
@@ -593,6 +600,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "0-0-50 · +18% S",
     tier: "Secondary",
     image: FIMG("photo-1559924632-fff3ee79c1dc"),
+    poster: "/fertilizers/sop.png",
     uses:
       "Chloride-free potassium plus sulphur, ideal for chloride-sensitive and quality crops. Improves flavour, colour and shelf life in fruit, vegetables and tobacco.",
     crops: ["Potato", "Tobacco", "Fruit", "Vegetables"],
@@ -603,6 +611,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "26-0-0 · +Ca",
     tier: "Secondary",
     image: FIMG("photo-1655130944329-b3a63166f6b5"),
+    poster: "/fertilizers/can.png",
     uses:
       "A fast-acting, low-acidity nitrogen source that also supplies calcium. Suited to top-dressing vegetables and to acidic soils where urea acidification is a concern.",
     crops: ["Vegetables", "Maize", "Tea", "Fruit"],
@@ -613,6 +622,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "46-0-0 · deep-placed",
     tier: "Major",
     image: FIMG("photo-1655130944281-072e0644db75"),
+    poster: "/fertilizers/guti-urea.png",
     uses:
       "Large urea briquettes deep-placed into the root zone of transplanted rice. Cuts nitrogen losses sharply, raising fertilizer-use efficiency and yield — widely adopted in intensive rice systems.",
     crops: ["Transplanted Rice", "Paddy", "Wetland Rice"],
@@ -623,6 +633,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "~25% Cu",
     tier: "Micronutrient",
     image: FIMG("photo-1537155023352-cda15844e56d"),
+    poster: "/fertilizers/copper-sulphate.png",
     uses:
       "Corrects copper deficiency that impairs grain set and disease resistance. Important for cereals and vegetables on organic and reclaimed soils.",
     crops: ["Wheat", "Rice", "Vegetables"],
@@ -633,6 +644,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "~30% Mn",
     tier: "Micronutrient",
     image: FIMG("photo-1537870148480-ed9ff56a8148"),
+    poster: "/fertilizers/manganese-sulphate.png",
     uses:
       "Supplies manganese for photosynthesis and enzyme function. Corrects deficiency on high-pH and intensively cropped soils, common in rice–wheat systems.",
     crops: ["Wheat", "Rice", "Pulses", "Vegetables"],
@@ -643,6 +655,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "~19% Fe",
     tier: "Micronutrient",
     image: FIMG("photo-1608797179015-0f64ad48744b"),
+    poster: "/fertilizers/ferrous-sulphate.png",
     uses:
       "Corrects iron-deficiency chlorosis (yellowing leaves), especially on calcareous and alkaline soils. Restores healthy green growth in fruit and vegetable crops.",
     crops: ["Fruit", "Vegetables", "Rice", "Groundnut"],
@@ -653,6 +666,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "Soil amendment · +Ca, +Mg",
     tier: "Secondary",
     image: FIMG("photo-1632858918575-f865ab926cc0"),
+    poster: "/fertilizers/dolomite.png",
     uses:
       "Raises pH on acidic and lateritic soils, supplies calcium and magnesium, and improves nutrient availability and root development.",
     crops: ["Acidic Soils", "Tea", "Pulses", "Vegetables"],
