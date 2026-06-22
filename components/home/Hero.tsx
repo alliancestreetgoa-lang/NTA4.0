@@ -81,7 +81,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.95, ease }}
-          className="mx-auto mt-10 grid w-full max-w-3xl grid-cols-2 gap-px overflow-hidden border border-white/15 bg-white/10 sm:grid-cols-4"
+          className="mt-10 grid w-full max-w-3xl grid-cols-2 gap-px overflow-hidden border border-white/15 bg-white/10 sm:grid-cols-4"
         >
           {site.stats.map((s) => (
             <div key={s.label} className="bg-ink/40 px-5 py-6 text-center backdrop-blur-sm">

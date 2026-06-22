@@ -16,6 +16,7 @@ import { DivisionCard } from "@/components/DivisionCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { Reveal, RevealGroup } from "@/components/Reveal";
+import { Parallax } from "@/components/Parallax";
 import { divisions, whyNta, aboutPoints, services } from "@/lib/data";
 import { asset } from "@/lib/asset";
 
@@ -57,8 +58,9 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="About NTA Group"
               title="A global commodity trading company, rooted in the UAE."
+              direction="left"
             />
-            <Reveal delay={2}>
+            <Reveal delay={2} direction="left">
               <p className="mt-6 text-lg leading-relaxed text-white/70">
                 From our headquarters in the United Arab Emirates, NTA Group
                 connects the world&apos;s producers, suppliers and
@@ -66,7 +68,7 @@ export default function HomePage() {
                 fertilizers and agricultural commodities.
               </p>
             </Reveal>
-            <Reveal delay={3}>
+            <Reveal delay={3} direction="left">
               <Link href="/about" className="mt-9 inline-flex">
                 <span className="btn-outline group">
                   Discover our story
@@ -79,7 +81,7 @@ export default function HomePage() {
           <div className="lg:col-span-7">
             <RevealGroup className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
               {aboutPoints.map((p) => (
-                <Reveal key={p.title}>
+                <Reveal key={p.title} direction="right">
                   <div className="border-t border-white/15 pt-5">
                     <div className="flex items-center gap-2.5">
                       <Check className="h-4 w-4 text-white" />
@@ -130,60 +132,68 @@ export default function HomePage() {
       </section>
 
       {/* FERTILIZER FOCUS — flagship */}
-      <section className="relative overflow-hidden bg-ink text-white">
-        <div className="container-px py-12 md:py-16">
-          {/* Header banner: title + plant image bleeding into the dark */}
-          <div className="relative overflow-hidden rounded-2xl">
-            {/* Plant image — fades into the background on the right (desktop) */}
-            <div className="absolute inset-y-0 right-0 hidden w-[58%] lg:block">
+      <section className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink text-white">
+        {/* Plant image — top-right corner, edges blurred into the dark on all four sides */}
+        <Parallax
+          distance={40}
+          className="pointer-events-none absolute right-0 top-0 hidden h-[66%] w-[52%] lg:block"
+        >
+          <Image
+            src={asset("/fertilizers/flagship-plant.png")}
+            alt="Seedling with fertilizer granules in soil"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="52vw"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%)",
+              WebkitMaskComposite: "source-in",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%)",
+              maskComposite: "intersect",
+            }}
+          />
+        </Parallax>
+
+        <div className="container-px relative z-10 py-16">
+          {/* Header: title + intro */}
+          <div className="max-w-2xl">
+            <Reveal direction="left">
+              <span className="eyebrow text-white/60 [&::before]:bg-lime-400">
+                Primary Focus · Flagship Division
+              </span>
+            </Reveal>
+            <Reveal delay={1} direction="left">
+              <h2 className="mt-6 text-display-md font-display font-semibold text-balance">
+                Chemical Fertilizers Trading
+              </h2>
+            </Reveal>
+            <Reveal delay={2} direction="left">
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/65">
+                Chemical fertilizers are the cornerstone of NTA Group. We{" "}
+                <span className="font-medium text-lime-400">source</span>,{" "}
+                <span className="font-medium text-lime-400">supply</span> and{" "}
+                <span className="font-medium text-lime-400">distribute</span> the
+                full spectrum of nitrogen, phosphate, potash and specialty
+                fertilizers to farmers, blenders and distributors across global
+                agricultural markets.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Mobile image */}
+          <Reveal className="mt-8 lg:hidden">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
               <Image
                 src={asset("/fertilizers/flagship-plant.png")}
                 alt="Seedling with fertilizer granules in soil"
                 fill
-                priority
                 className="object-cover"
-                sizes="58vw"
+                sizes="100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-ink from-5% via-ink/30 via-45% to-transparent" />
             </div>
-
-            <div className="relative z-10 max-w-2xl py-2 lg:py-8">
-              <Reveal>
-                <span className="eyebrow text-white/60 [&::before]:bg-lime-400">
-                  Primary Focus · Flagship Division
-                </span>
-              </Reveal>
-              <Reveal delay={1}>
-                <h2 className="mt-6 text-display-md font-display font-semibold text-balance">
-                  Chemical Fertilizers Trading
-                </h2>
-              </Reveal>
-              <Reveal delay={2}>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/65">
-                  Chemical fertilizers are the cornerstone of NTA Group. We{" "}
-                  <span className="font-medium text-lime-400">source</span>,{" "}
-                  <span className="font-medium text-lime-400">supply</span> and{" "}
-                  <span className="font-medium text-lime-400">distribute</span> the
-                  full spectrum of nitrogen, phosphate, potash and specialty
-                  fertilizers to farmers, blenders and distributors across global
-                  agricultural markets.
-                </p>
-              </Reveal>
-            </div>
-
-            {/* Mobile image */}
-            <Reveal className="mt-8 lg:hidden">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
-                <Image
-                  src={asset("/fertilizers/flagship-plant.png")}
-                  alt="Seedling with fertilizer granules in soil"
-                  fill
-                  className="object-cover"
-                  sizes="100vw"
-                />
-              </div>
-            </Reveal>
-          </div>
+          </Reveal>
 
           {/* Product chips + capability features */}
           <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-16">
@@ -296,8 +306,9 @@ export default function HomePage() {
               <SectionHeading
                 eyebrow="Global Commodity Solutions"
                 title="End-to-end services across the value chain."
+                direction="left"
               />
-              <Reveal delay={2}>
+              <Reveal delay={2} direction="left">
                 <p className="mt-6 text-lg leading-relaxed text-white/70">
                   Beyond physical trading, we deliver the sourcing, logistics
                   and risk management capabilities that make global commodity
@@ -309,7 +320,7 @@ export default function HomePage() {
             <div className="lg:col-span-8">
               <RevealGroup className="grid gap-x-10 gap-y-7 sm:grid-cols-2">
                 {services.map((s) => (
-                  <Reveal key={s.title}>
+                  <Reveal key={s.title} direction="right">
                     <div className="flex gap-4 border-t border-white/15 pt-5">
                       <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-ink">
                         <ArrowUpRight className="h-3.5 w-3.5" />
