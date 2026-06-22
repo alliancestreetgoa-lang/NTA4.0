@@ -10,7 +10,7 @@ export function Footer() {
       <div className="container-px py-20">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Logo className="h-16 md:h-20" />
+            <Logo variant="dark" className="h-32 md:h-40" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">
               {site.tagline}. A UAE-based global commodity trading company
               connecting producers and markets worldwide.

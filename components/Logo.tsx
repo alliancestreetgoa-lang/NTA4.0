@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { asset } from "@/lib/asset";
 
-// Official NTA Group logo — used exactly as supplied (white mark + wordmark on
-// its original gray background). Colors are never altered; the artwork is only
-// cropped to frame the logo and shown inside a rounded tile.
+// Official NTA Group logo (mark + wordmark on a transparent background).
+// Recolored per surface via a CSS filter: pure white on the dark header,
+// pure black on light surfaces (the white mobile menu).
 export function Logo({
+  variant = "light",
   className = "h-10 md:h-12",
 }: {
   variant?: "dark" | "light";
@@ -17,16 +18,18 @@ export function Logo({
       aria-label="NTA Group — home"
       className="group inline-flex items-center"
     >
-      <span
-        className={`inline-flex overflow-hidden rounded-lg ${className}`}
-      >
+      <span className={`inline-flex ${className}`}>
         <Image
           src={asset("/logo.png")}
           alt="NTA Group"
-          width={1110}
-          height={761}
+          width={1080}
+          height={720}
           priority
-          className="h-full w-auto object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          className={`h-full w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03] ${
+            variant === "dark"
+              ? "[filter:brightness(0)_invert(1)]"
+              : "[filter:brightness(0)]"
+          }`}
         />
       </span>
     </Link>
