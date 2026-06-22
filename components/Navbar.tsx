@@ -21,7 +21,7 @@ export function Navbar() {
       <header
         className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-sand-500 backdrop-blur-xl transition-all duration-500 ease-premium"
       >
-        <div className="container-px flex h-20 items-center justify-between">
+        <div className="container-px flex h-16 items-center justify-between">
           <Logo variant="dark" />
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -75,7 +75,7 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[60] bg-white lg:hidden"
           >
-            <div className="container-px flex h-20 items-center justify-between">
+            <div className="container-px flex h-16 items-center justify-between">
               <Logo />
               <button onClick={() => setOpen(false)} aria-label="Close menu">
                 <X className="h-6 w-6 text-ink" />

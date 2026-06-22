@@ -23,7 +23,7 @@ export default function CommoditiesPage() {
       />
 
       {/* Quick nav */}
-      <section className="sticky top-20 z-30 border-b border-white/15 bg-sand-500/95 backdrop-blur-xl">
+      <section className="sticky top-16 z-30 border-b border-white/15 bg-sand-500/95 backdrop-blur-xl">
         <div className="container-px flex gap-6 overflow-x-auto py-4">
           {divisions.map((d) => (
             <a

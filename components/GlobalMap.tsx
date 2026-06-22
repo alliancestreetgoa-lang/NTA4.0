@@ -1,7 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
+
+const EARTH =
+  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80";
 
 // Approximate positions on a 1000 x 500 stylised map canvas
 type Node = {
@@ -34,10 +38,18 @@ export function GlobalMap() {
 
   return (
     <div className="relative w-full overflow-hidden rounded-sm border border-white/10 bg-ink">
+      <Image
+        src={EARTH}
+        alt="Global trade network — Earth at night"
+        fill
+        className="object-cover opacity-70"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/35" />
       <div className="absolute inset-0 grain opacity-20" />
       <svg
         viewBox="0 0 1000 500"
-        className="w-full"
+        className="relative z-10 w-full"
         style={{ background: "transparent" }}
       >
         {/* Dotted graticule */}
@@ -120,7 +132,7 @@ export function GlobalMap() {
         ))}
       </svg>
 
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/10 px-6 py-4 text-xs text-white/50">
+      <div className="relative z-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/10 bg-ink/60 px-6 py-4 text-xs text-white/60 backdrop-blur">
         <span className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-sand-400" /> Trading hub —
           Dubai, UAE

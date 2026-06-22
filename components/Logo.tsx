@@ -5,7 +5,7 @@ import Link from "next/link";
 // its original gray background). Colors are never altered; the artwork is only
 // cropped to frame the logo and shown inside a rounded tile.
 export function Logo({
-  className = "h-12 md:h-14",
+  className = "h-10 md:h-12",
 }: {
   variant?: "dark" | "light";
   className?: string;

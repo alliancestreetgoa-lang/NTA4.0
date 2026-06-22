@@ -1,6 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Check, ShieldCheck, Globe2, Sparkles } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+  ShieldCheck,
+  Globe2,
+  Sparkles,
+  Warehouse,
+  Leaf,
+} from "lucide-react";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
 import { BangladeshFertilizers } from "@/components/home/BangladeshFertilizers";
@@ -9,6 +17,29 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { divisions, whyNta, aboutPoints, services } from "@/lib/data";
+
+const fImg = (id: string) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=300&q=70`;
+
+// Flagship fertilizer line-up (circular product chips with grades)
+const flagshipGrades = [
+  { name: "Urea 46%", grade: "46-0-0 · 46% N", img: fImg("photo-1710223221719-6251cb1b5c5b") },
+  { name: "DAP", grade: "18-46-0 · N + P", img: fImg("photo-1656581417767-5eb8ecd8bf3c") },
+  { name: "MAP", grade: "11-52-0 · 52% P₂O₅", img: fImg("photo-1774351922689-896a9340aa7b") },
+  { name: "NPK", grade: "Various grades", img: fImg("photo-1537155023352-cda15844e56d") },
+  { name: "Potash (MOP)", grade: "60% K₂O", img: fImg("photo-1641543764196-f5e42a65a0db") },
+  { name: "SOP", grade: "50% K₂O · 18% S", img: fImg("photo-1559924632-fff3ee79c1dc") },
+  { name: "CAN", grade: "27% N", img: fImg("photo-1632858918575-f865ab926cc0") },
+  { name: "Ammonium Sulphate", grade: "21% N · 24% S", img: fImg("photo-1612708015264-5f13c037c9cd") },
+  { name: "Sulphur", grade: "90% S (min.)", img: fImg("photo-1537870148480-ed9ff56a8148") },
+  { name: "TSP", grade: "0-46-0 · 46% P₂O₅", img: fImg("photo-1542308744-011fa9a309f7") },
+];
+
+const flagshipFeatures = [
+  { icon: Globe2, title: "Global sourcing network", desc: "Direct access to producers across continents." },
+  { icon: Warehouse, title: "Reliable supply & logistics", desc: "Vessel and container shipments worldwide." },
+  { icon: Leaf, title: "Quality you can trust", desc: "Partnerships built to grow, season after season." },
+];
 
 export default function HomePage() {
   const fertilizer = divisions[0];
@@ -99,11 +130,25 @@ export default function HomePage() {
 
       {/* FERTILIZER FOCUS — flagship */}
       <section className="relative overflow-hidden bg-ink text-white">
-        <div className="container-px py-24 md:py-32">
-          <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
-            <div>
+        <div className="container-px py-12 md:py-16">
+          {/* Header banner: title + plant image bleeding into the dark */}
+          <div className="relative overflow-hidden rounded-2xl">
+            {/* Plant image — fades into the background on the right (desktop) */}
+            <div className="absolute inset-y-0 right-0 hidden w-[58%] lg:block">
+              <Image
+                src="/fertilizers/flagship-plant.png"
+                alt="Seedling with fertilizer granules in soil"
+                fill
+                priority
+                className="object-cover"
+                sizes="58vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-ink from-5% via-ink/30 via-45% to-transparent" />
+            </div>
+
+            <div className="relative z-10 max-w-2xl py-2 lg:py-8">
               <Reveal>
-                <span className="eyebrow text-white/60 [&::before]:bg-sand-400">
+                <span className="eyebrow text-white/60 [&::before]:bg-lime-400">
                   Primary Focus · Flagship Division
                 </span>
               </Reveal>
@@ -113,78 +158,97 @@ export default function HomePage() {
                 </h2>
               </Reveal>
               <Reveal delay={2}>
-                <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/65">
-                  {fertilizer.description}
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/65">
+                  Chemical fertilizers are the cornerstone of NTA Group. We{" "}
+                  <span className="font-medium text-lime-400">source</span>,{" "}
+                  <span className="font-medium text-lime-400">supply</span> and{" "}
+                  <span className="font-medium text-lime-400">distribute</span> the
+                  full spectrum of nitrogen, phosphate, potash and specialty
+                  fertilizers to farmers, blenders and distributors across global
+                  agricultural markets.
                 </p>
-              </Reveal>
-
-              <Reveal delay={3}>
-                <div className="mt-9 flex flex-wrap gap-2.5">
-                  {[
-                    "Urea 46%",
-                    "DAP",
-                    "MAP",
-                    "NPK",
-                    "Potash (MOP)",
-                    "SOP",
-                    "CAN",
-                    "Ammonium Sulphate",
-                    "Sulphur",
-                    "TSP",
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-white/80"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </Reveal>
-
-              <Reveal delay={4}>
-                <Link
-                  href="#bangladesh-fertilizers"
-                  className="mt-10 inline-flex"
-                >
-                  <span className="btn-light group">
-                    Explore fertilizer portfolio
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </Link>
               </Reveal>
             </div>
 
-            <Reveal delay={2}>
-              <div className="relative aspect-[4/5] overflow-hidden">
+            {/* Mobile image */}
+            <Reveal className="mt-8 lg:hidden">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
                 <Image
-                  src={fertilizer.image}
-                  alt="Chemical fertilizers trading"
+                  src="/fertilizers/flagship-plant.png"
+                  alt="Seedling with fertilizer granules in soil"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 grid grid-cols-2 gap-px border-t border-white/15 bg-white/10">
-                  <div className="bg-ink/60 px-6 py-5 backdrop-blur">
-                    <div className="font-display text-2xl font-semibold">
-                      20+
-                    </div>
-                    <div className="mt-1 text-xs text-white/60">
-                      Fertilizer grades supplied
-                    </div>
-                  </div>
-                  <div className="bg-ink/60 px-6 py-5 backdrop-blur">
-                    <div className="font-display text-2xl font-semibold">
-                      Global
-                    </div>
-                    <div className="mt-1 text-xs text-white/60">
-                      Vessel & container reach
-                    </div>
-                  </div>
-                </div>
               </div>
             </Reveal>
+          </div>
+
+          {/* Product chips + capability features */}
+          <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <RevealGroup className="grid grid-cols-2 gap-x-5 gap-y-6 sm:grid-cols-3 md:grid-cols-5 lg:col-span-8">
+              {flagshipGrades.map((p) => (
+                <Reveal key={p.name}>
+                  <div className="flex flex-col items-center text-center">
+                    <div className="relative h-16 w-16 overflow-hidden rounded-full border border-white/15 ring-1 ring-white/5 transition-transform duration-500 hover:scale-105">
+                      <Image
+                        src={p.img}
+                        alt={p.name}
+                        fill
+                        className="object-cover"
+                        sizes="80px"
+                      />
+                    </div>
+                    <div className="mt-3 font-display text-sm font-semibold leading-tight">
+                      {p.name}
+                    </div>
+                    <div className="mt-1 text-[0.7rem] leading-tight text-sand-400">
+                      {p.grade}
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </RevealGroup>
+
+            <div className="lg:col-span-4 lg:border-l lg:border-white/10 lg:pl-12">
+              <RevealGroup className="space-y-6">
+                {flagshipFeatures.map((f) => {
+                  const Icon = f.icon;
+                  return (
+                    <Reveal key={f.title}>
+                      <div className="flex gap-4 border-b border-white/10 pb-6 last:border-0 last:pb-0">
+                        <Icon
+                          className="h-6 w-6 shrink-0 text-white"
+                          strokeWidth={1.5}
+                        />
+                        <div>
+                          <div className="font-display text-base font-semibold">
+                            {f.title}
+                          </div>
+                          <div className="mt-1 text-sm leading-relaxed text-white/55">
+                            {f.desc}
+                          </div>
+                        </div>
+                      </div>
+                    </Reveal>
+                  );
+                })}
+              </RevealGroup>
+            </div>
+          </div>
+
+          {/* CTA + tagline */}
+          <div className="mt-10 flex flex-col items-start justify-between gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center">
+            <Link href="#bangladesh-fertilizers" className="inline-flex">
+              <span className="btn-light group">
+                Explore fertilizer portfolio
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </Link>
+            <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-white/55">
+              <Leaf className="h-4 w-4 text-sand-400" strokeWidth={1.6} />
+              Nourishing crops · Enriching lives · Growing together
+            </p>
           </div>
         </div>
       </section>

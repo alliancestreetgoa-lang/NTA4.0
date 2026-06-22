@@ -34,12 +34,12 @@ const IMG = {
   fertilizer:
     "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1600&q=80",
   energy:
-    "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1600&q=80",
-  oil: "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1598408745613-178751e2ccde?auto=format&fit=crop&w=1600&q=80",
+  oil: "https://images.unsplash.com/photo-1509390288171-ce2088f7d08e?auto=format&fit=crop&w=1600&q=80",
   petrochem:
     "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1600&q=80",
   grains:
-    "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1621956838481-f8f616950454?auto=format&fit=crop&w=1600&q=80",
   solutions:
     "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1600&q=80",
 };
@@ -490,6 +490,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "0-0-60 · 60% K₂O",
     tier: "Major",
     image: FIMG("photo-1641543764196-f5e42a65a0db"),
+    poster: "/fertilizers/mop.png",
     uses:
       "The principal potassium source. Improves disease and lodging resistance, water regulation, grain filling and tuber quality — critical where intensive cropping depletes soil potassium.",
     crops: ["Potato", "Banana", "Rice", "Sugarcane"],
@@ -500,6 +501,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "0-16-0 · +11% S, +Ca",
     tier: "Secondary",
     image: FIMG("photo-1568111384070-4bea71e5ed74"),
+    poster: "/fertilizers/ssp.png",
     uses:
       "Supplies phosphorus together with sulphur and calcium in a single product. Particularly valuable for oilseeds and pulses and on sulphur-deficient soils.",
     crops: ["Mustard", "Groundnut", "Pulses", "Vegetables"],
@@ -510,6 +512,7 @@ export const bangladeshFertilizers: Fertilizer[] = [
     grade: "21-0-0 · +24% S",
     tier: "Secondary",
     image: FIMG("photo-1559924632-fff3ee79c1dc"),
+    poster: "/fertilizers/ammonium-sulphate.png",
     uses:
       "Delivers nitrogen plus sulphur and gently acidifies the root zone. Preferred for tea, oilseeds and alkaline soils, and effective at correcting sulphur deficiency.",
     crops: ["Tea", "Oilseeds", "Vegetables", "Rice"],
