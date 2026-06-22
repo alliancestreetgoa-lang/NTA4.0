@@ -23,13 +23,13 @@ export default function CommoditiesPage() {
       />
 
       {/* Quick nav */}
-      <section className="sticky top-20 z-30 border-b border-line bg-white/90 backdrop-blur-xl">
+      <section className="sticky top-20 z-30 border-b border-white/15 bg-sand-500/95 backdrop-blur-xl">
         <div className="container-px flex gap-6 overflow-x-auto py-4">
           {divisions.map((d) => (
             <a
               key={d.slug}
               href={`#${d.slug}`}
-              className="whitespace-nowrap text-sm font-medium text-charcoal-muted transition-colors hover:text-ink"
+              className="whitespace-nowrap text-sm font-medium text-white/70 transition-colors hover:text-white"
             >
               {d.title}
             </a>
@@ -45,8 +45,8 @@ export default function CommoditiesPage() {
             key={d.slug}
             id={d.slug}
             className={`scroll-mt-36 ${
-              d.primary ? "bg-sand-50/70" : idx % 2 === 1 ? "bg-sand-50/40" : "bg-white"
-            } border-b border-line`}
+              d.primary ? "bg-sand-700" : idx % 2 === 1 ? "bg-sand-600" : "bg-sand-500"
+            } border-b border-white/15`}
           >
             <div className="container-px py-24 md:py-28">
               <div
@@ -58,7 +58,7 @@ export default function CommoditiesPage() {
                 <div>
                   <Reveal>
                     <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center border border-line bg-white text-ink">
+                      <div className="flex h-12 w-12 items-center justify-center border border-white/20 bg-white/10 text-white">
                         <Icon className="h-6 w-6" strokeWidth={1.4} />
                       </div>
                       {d.primary && (
@@ -70,12 +70,12 @@ export default function CommoditiesPage() {
                   </Reveal>
 
                   <Reveal delay={1}>
-                    <h2 className="mt-6 text-display-md font-display font-semibold text-ink">
+                    <h2 className="mt-6 text-display-md font-display font-semibold text-white">
                       {d.title}
                     </h2>
                   </Reveal>
                   <Reveal delay={2}>
-                    <p className="mt-5 max-w-lg text-lg leading-relaxed text-charcoal-light">
+                    <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/70">
                       {d.description}
                     </p>
                   </Reveal>
@@ -83,14 +83,14 @@ export default function CommoditiesPage() {
                   {/* Applications */}
                   <Reveal delay={3}>
                     <div className="mt-9">
-                      <h3 className="text-xs font-medium uppercase tracking-[0.18em] text-charcoal-muted">
+                      <h3 className="text-xs font-medium uppercase tracking-[0.18em] text-white/70">
                         Industry Applications
                       </h3>
                       <div className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
                         {d.applications.map((a) => (
                           <div key={a} className="flex items-center gap-2.5">
-                            <Check className="h-4 w-4 shrink-0 text-sand-500" />
-                            <span className="text-sm text-charcoal">{a}</span>
+                            <Check className="h-4 w-4 shrink-0 text-white" />
+                            <span className="text-sm text-white/70">{a}</span>
                           </div>
                         ))}
                       </div>
@@ -99,13 +99,13 @@ export default function CommoditiesPage() {
 
                   {/* Capability */}
                   <Reveal delay={4}>
-                    <div className="mt-8 flex gap-3 border-l-2 border-sand-400 bg-white/60 p-5">
-                      <Globe2 className="mt-0.5 h-5 w-5 shrink-0 text-ink" strokeWidth={1.5} />
+                    <div className="mt-8 flex gap-3 border-l-2 border-white/50 bg-white/5 p-5">
+                      <Globe2 className="mt-0.5 h-5 w-5 shrink-0 text-white" strokeWidth={1.5} />
                       <div>
-                        <div className="text-xs font-medium uppercase tracking-[0.16em] text-charcoal-muted">
+                        <div className="text-xs font-medium uppercase tracking-[0.16em] text-white/70">
                           Global Supply Capability
                         </div>
-                        <p className="mt-1.5 text-sm leading-relaxed text-charcoal">
+                        <p className="mt-1.5 text-sm leading-relaxed text-white/70">
                           {d.capability}
                         </p>
                       </div>
@@ -131,14 +131,14 @@ export default function CommoditiesPage() {
                     {d.groups.map((group) => (
                       <Reveal key={group.heading}>
                         <div>
-                          <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-ink">
+                          <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-white">
                             {group.heading}
                           </h3>
                           <div className="mt-3 flex flex-wrap gap-2">
                             {group.products.map((p) => (
                               <span
                                 key={p.name}
-                                className="group inline-flex items-center gap-1.5 border border-line bg-white px-3.5 py-2 text-xs font-medium text-charcoal transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-white"
+                                className="group inline-flex items-center gap-1.5 border border-white/25 bg-white/5 px-3.5 py-2 text-xs font-medium text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-ink"
                               >
                                 {p.name}
                               </span>

@@ -9,7 +9,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-ink">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-ink">
       {/* Background image */}
       <div className="absolute inset-0">
         <div
@@ -24,7 +24,7 @@ export function Hero() {
         <div className="absolute inset-0 grain opacity-30" />
       </div>
 
-      <div className="container-px relative w-full pb-20 pt-32 md:pb-28">
+      <div className="container-px relative w-full pt-24 pb-10">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -34,10 +34,10 @@ export function Hero() {
           UAE-Based Global Commodity Trading
         </motion.span>
 
-        <h1 className="mt-7 max-w-5xl text-display-xl font-display font-semibold text-white text-balance">
+        <h1 className="mt-6 max-w-5xl text-display-lg font-display font-semibold leading-[1.04] text-white text-balance">
           {["Powering Global Trade", "Through Energy &", "Agri Commodities"].map(
             (line, i) => (
-              <span key={line} className="block overflow-hidden">
+              <span key={line} className="block overflow-hidden py-[0.08em]">
                 <motion.span
                   className="block"
                   initial={{ y: "110%" }}
@@ -55,7 +55,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease }}
-          className="mt-8 max-w-xl text-lg leading-relaxed text-white/70"
+          className="mt-5 max-w-xl text-lg leading-relaxed text-white/70"
         >
           Connecting producers, suppliers, manufacturers and global markets
           through reliable commodity trading solutions.
@@ -65,7 +65,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.75, ease }}
-          className="mt-10 flex flex-wrap gap-4"
+          className="mt-8 flex flex-wrap gap-4"
         >
           <Link href="/commodities" className="btn-light group">
             Explore Commodities
@@ -81,10 +81,10 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.95, ease }}
-          className="mt-16 grid max-w-3xl grid-cols-2 gap-px overflow-hidden border border-white/15 bg-white/10 sm:grid-cols-4"
+          className="mx-auto mt-10 grid w-full max-w-3xl grid-cols-2 gap-px overflow-hidden border border-white/15 bg-white/10 sm:grid-cols-4"
         >
           {site.stats.map((s) => (
-            <div key={s.label} className="bg-ink/40 px-5 py-6 backdrop-blur-sm">
+            <div key={s.label} className="bg-ink/40 px-5 py-6 text-center backdrop-blur-sm">
               <div className="font-display text-3xl font-semibold text-white">
                 {s.value}
               </div>

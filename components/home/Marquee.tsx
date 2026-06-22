@@ -19,16 +19,16 @@ const items = [
 
 export function Marquee() {
   return (
-    <section className="border-y border-line bg-sand-50 py-6">
+    <section className="border-y border-white/15 bg-sand-600 py-6">
       <div className="relative flex overflow-hidden">
         <div className="flex shrink-0 animate-marquee items-center gap-12 pr-12">
           {[...items, ...items].map((item, i) => (
             <span
               key={i}
-              className="flex items-center gap-12 whitespace-nowrap text-sm font-medium uppercase tracking-[0.15em] text-charcoal-muted"
+              className="flex items-center gap-12 whitespace-nowrap text-sm font-medium uppercase tracking-[0.15em] text-white/70"
             >
               {item}
-              <span className="h-1 w-1 rounded-full bg-sand-400" />
+              <span className="h-1 w-1 rounded-full bg-white/40" />
             </span>
           ))}
         </div>

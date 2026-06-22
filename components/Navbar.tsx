@@ -9,16 +9,8 @@ import { Logo } from "./Logo";
 import { nav } from "@/lib/site";
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -27,14 +19,10 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-premium ${
-          scrolled
-            ? "border-b border-line bg-white/85 backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent"
-        }`}
+        className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-sand-500 backdrop-blur-xl transition-all duration-500 ease-premium"
       >
         <div className="container-px flex h-20 items-center justify-between">
-          <Logo />
+          <Logo variant="dark" />
 
           <nav className="hidden items-center gap-8 lg:flex">
             {nav.map((item) => {
@@ -47,14 +35,14 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={`relative text-sm font-medium transition-colors duration-300 ${
-                    active ? "text-ink" : "text-charcoal-muted hover:text-ink"
+                    active ? "text-white" : "text-white/70 hover:text-white"
                   }`}
                 >
                   {item.label}
                   {active && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute -bottom-1.5 left-0 h-px w-full bg-ink"
+                      className="absolute -bottom-1.5 left-0 h-px w-full bg-white"
                     />
                   )}
                 </Link>
@@ -63,7 +51,7 @@ export function Navbar() {
           </nav>
 
           <div className="hidden lg:block">
-            <Link href="/contact" className="btn-primary group">
+            <Link href="/contact" className="btn-light group">
               Contact Trading Team
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
@@ -74,7 +62,7 @@ export function Navbar() {
             className="lg:hidden"
             aria-label="Open menu"
           >
-            <Menu className="h-6 w-6 text-ink" />
+            <Menu className="h-6 w-6 text-white" />
           </button>
         </div>
       </header>

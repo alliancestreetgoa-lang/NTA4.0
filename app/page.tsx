@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowUpRight, Check, ShieldCheck, Globe2, Sparkles } from "lucide-react";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
+import { BangladeshFertilizers } from "@/components/home/BangladeshFertilizers";
 import { DivisionCard } from "@/components/DivisionCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
@@ -26,7 +27,7 @@ export default function HomePage() {
               title="A global commodity trading company, rooted in the UAE."
             />
             <Reveal delay={2}>
-              <p className="mt-6 text-lg leading-relaxed text-charcoal-light">
+              <p className="mt-6 text-lg leading-relaxed text-white/70">
                 From our headquarters in the United Arab Emirates, NTA Group
                 connects the world&apos;s producers, suppliers and
                 manufacturers with the markets that need them — across energy,
@@ -47,14 +48,14 @@ export default function HomePage() {
             <RevealGroup className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
               {aboutPoints.map((p) => (
                 <Reveal key={p.title}>
-                  <div className="border-t border-line pt-5">
+                  <div className="border-t border-white/15 pt-5">
                     <div className="flex items-center gap-2.5">
-                      <Check className="h-4 w-4 text-sand-500" />
-                      <h3 className="font-display text-base font-semibold text-ink">
+                      <Check className="h-4 w-4 text-white" />
+                      <h3 className="font-display text-base font-semibold text-white">
                         {p.title}
                       </h3>
                     </div>
-                    <p className="mt-2.5 text-sm leading-relaxed text-charcoal-light">
+                    <p className="mt-2.5 text-sm leading-relaxed text-white/70">
                       {p.desc}
                     </p>
                   </div>
@@ -66,7 +67,7 @@ export default function HomePage() {
       </section>
 
       {/* BUSINESS DIVISIONS */}
-      <section className="border-y border-line bg-sand-50/60">
+      <section className="border-y border-white/15 bg-sand-600">
         <div className="container-px py-24 md:py-32">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <SectionHeading
@@ -143,7 +144,7 @@ export default function HomePage() {
 
               <Reveal delay={4}>
                 <Link
-                  href="/commodities#chemical-fertilizers"
+                  href="#bangladesh-fertilizers"
                   className="mt-10 inline-flex"
                 >
                   <span className="btn-light group">
@@ -188,6 +189,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* BANGLADESH FERTILIZER REQUIREMENT */}
+      <BangladeshFertilizers />
+
       {/* WHY NTA */}
       <section className="container-px py-24 md:py-32">
         <SectionHeading
@@ -220,7 +224,7 @@ export default function HomePage() {
       </section>
 
       {/* COMMODITY SOLUTIONS / SERVICES */}
-      <section className="border-y border-line bg-sand-50/60">
+      <section className="border-y border-white/15 bg-sand-600">
         <div className="container-px py-24 md:py-32">
           <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
             <div className="lg:col-span-4">
@@ -229,7 +233,7 @@ export default function HomePage() {
                 title="End-to-end services across the value chain."
               />
               <Reveal delay={2}>
-                <p className="mt-6 text-lg leading-relaxed text-charcoal-light">
+                <p className="mt-6 text-lg leading-relaxed text-white/70">
                   Beyond physical trading, we deliver the sourcing, logistics
                   and risk management capabilities that make global commodity
                   flows reliable.
@@ -241,15 +245,15 @@ export default function HomePage() {
               <RevealGroup className="grid gap-x-10 gap-y-7 sm:grid-cols-2">
                 {services.map((s) => (
                   <Reveal key={s.title}>
-                    <div className="flex gap-4 border-t border-line pt-5">
-                      <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-ink text-white">
+                    <div className="flex gap-4 border-t border-white/15 pt-5">
+                      <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-ink">
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </span>
                       <div>
-                        <h3 className="font-display text-base font-semibold text-ink">
+                        <h3 className="font-display text-base font-semibold text-white">
                           {s.title}
                         </h3>
-                        <p className="mt-1.5 text-sm leading-relaxed text-charcoal-light">
+                        <p className="mt-1.5 text-sm leading-relaxed text-white/70">
                           {s.desc}
                         </p>
                       </div>

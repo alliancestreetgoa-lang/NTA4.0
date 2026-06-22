@@ -45,7 +45,7 @@ export default function WhyNtaPage() {
             const Icon = icons[i];
             return (
               <Reveal key={item.title}>
-                <div className="group flex h-full flex-col border-t-2 border-line bg-white pt-8 transition-colors duration-500 hover:border-sand-400">
+                <div className="group flex h-full flex-col border-t-2 border-line bg-white p-8 transition-colors duration-500 hover:border-sand-400">
                   <div className="flex h-14 w-14 items-center justify-center border border-line bg-sand-50 text-ink transition-colors duration-500 group-hover:bg-ink group-hover:text-white">
                     <Icon className="h-6 w-6" strokeWidth={1.4} />
                   </div>
@@ -63,7 +63,7 @@ export default function WhyNtaPage() {
       </section>
 
       {/* Process band */}
-      <section className="border-y border-line bg-sand-50/60">
+      <section className="border-y border-white/15 bg-sand-600">
         <div className="container-px py-24 md:py-32">
           <SectionHeading
             eyebrow="How we work"

@@ -25,23 +25,13 @@ export function SectionHeading({
         </Reveal>
       )}
       <Reveal delay={1}>
-        <h2
-          className={`mt-5 text-display-md font-display font-semibold text-balance ${
-            light ? "text-white" : "text-ink"
-          }`}
-        >
+        <h2 className="mt-5 text-display-md font-display font-semibold text-balance text-white">
           {title}
         </h2>
       </Reveal>
       {intro && (
         <Reveal delay={2}>
-          <p
-            className={`mt-6 text-lg leading-relaxed ${
-              light ? "text-white/65" : "text-charcoal-light"
-            }`}
-          >
-            {intro}
-          </p>
+          <p className="mt-6 text-lg leading-relaxed text-white/70">{intro}</p>
         </Reveal>
       )}
     </div>

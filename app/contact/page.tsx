@@ -29,7 +29,7 @@ export default function ContactPage() {
               <span className="eyebrow">UAE Headquarters</span>
             </Reveal>
             <Reveal delay={1}>
-              <h2 className="mt-5 font-display text-3xl font-semibold text-ink">
+              <h2 className="mt-5 font-display text-3xl font-semibold text-white">
                 Let&apos;s build a trading partnership.
               </h2>
             </Reveal>
@@ -60,23 +60,23 @@ export default function ContactPage() {
                 },
               ].map((c, i) => (
                 <Reveal key={c.label} delay={i}>
-                  <div className="flex gap-4 border-t border-line pt-6">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center border border-line bg-sand-50 text-ink">
+                  <div className="flex gap-4 border-t border-white/15 pt-6">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/15 bg-sand-600 text-white">
                       <c.icon className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <div className="text-xs font-medium uppercase tracking-[0.14em] text-charcoal-muted">
+                      <div className="text-xs font-medium uppercase tracking-[0.14em] text-white/70">
                         {c.label}
                       </div>
                       {c.href ? (
                         <a
                           href={c.href}
-                          className="mt-1 block text-[0.95rem] leading-relaxed text-ink transition-colors hover:text-sand-500"
+                          className="mt-1 block text-[0.95rem] leading-relaxed text-white transition-colors hover:text-white"
                         >
                           {c.value}
                         </a>
                       ) : (
-                        <p className="mt-1 text-[0.95rem] leading-relaxed text-ink">
+                        <p className="mt-1 text-[0.95rem] leading-relaxed text-white">
                           {c.value}
                         </p>
                       )}
@@ -87,9 +87,9 @@ export default function ContactPage() {
             </div>
 
             <Reveal delay={2}>
-              <div className="mt-10 flex items-start gap-3 border-l-2 border-sand-400 bg-sand-50 p-5">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-ink" strokeWidth={1.5} />
-                <p className="text-sm leading-relaxed text-charcoal">
+              <div className="mt-10 flex items-start gap-3 border-l-2 border-white/40 bg-sand-600 p-5">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-white" strokeWidth={1.5} />
+                <p className="text-sm leading-relaxed text-white/70">
                   Strategically located in Dubai — at the crossroads of European,
                   Asian and African trade routes.
                 </p>

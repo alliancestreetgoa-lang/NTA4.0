@@ -21,12 +21,12 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center justify-center border border-line bg-sand-50 px-8 py-20 text-center">
-        <CheckCircle2 className="h-12 w-12 text-sand-500" strokeWidth={1.4} />
-        <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
+      <div className="flex flex-col items-center justify-center border border-white/15 bg-sand-600 px-8 py-20 text-center">
+        <CheckCircle2 className="h-12 w-12 text-white" strokeWidth={1.4} />
+        <h3 className="mt-6 font-display text-2xl font-semibold text-white">
           Thank you — your inquiry has been received.
         </h3>
-        <p className="mt-3 max-w-md text-sm leading-relaxed text-charcoal-light">
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">
           Our trading team will review your request and respond within one
           business day. For urgent matters, contact our trading desk directly.
         </p>

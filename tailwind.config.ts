@@ -9,28 +9,33 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Core monochrome palette
+        // Pure-neutral monochrome palette, derived from the NTA Group logo.
+        // Brand gray = #707070 (sampled from the logo); all tones are true
+        // neutral (no cool/warm tint) so the whole site matches the mark.
         ink: {
-          DEFAULT: "#0A0A0B",
-          900: "#121214",
-          800: "#1C1C1F",
-          700: "#2A2A2E",
+          DEFAULT: "#0E0E0E",
+          900: "#161616",
+          800: "#1F1F1F",
+          700: "#2B2B2B",
         },
         charcoal: {
-          DEFAULT: "#3A3A3F",
-          light: "#52525A",
-          muted: "#6B6B73",
+          DEFAULT: "#3D3D3D",
+          light: "#545454",
+          muted: "#707070",
         },
-        // UAE desert-inspired sand / beige
+        // Neutral-gray scale anchored on the logo's #707070 (sand-500).
+        // Token name kept as `sand` so existing utilities recolor automatically.
         sand: {
-          50: "#FBF9F5",
-          100: "#F5F0E8",
-          200: "#EBE3D5",
-          300: "#DDD0BB",
-          400: "#C9B596",
-          500: "#B89B72",
+          50: "#F5F5F5",
+          100: "#EBEBEB",
+          200: "#DCDCDC",
+          300: "#C2C2C2",
+          400: "#969696",
+          500: "#707070",
+          600: "#5E5E5E",
+          700: "#4A4A4A",
         },
-        line: "#E8E6E1",
+        line: "#E3E3E3",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

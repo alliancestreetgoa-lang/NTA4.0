@@ -32,7 +32,7 @@ export default function SustainabilityPage() {
               title="Sustainability built into how we trade."
             />
             <Reveal delay={2}>
-              <p className="mt-6 text-lg leading-relaxed text-charcoal-light">
+              <p className="mt-6 text-lg leading-relaxed text-white/70">
                 As a global trader of fertilizers, energy and food commodities,
                 we recognise our role in the systems that feed and power the
                 world. Responsible practice is not an add-on — it is integral to

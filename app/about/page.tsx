@@ -32,7 +32,7 @@ export default function AboutPage() {
               eyebrow="Who we are"
               title="A diversified global commodity trading company."
             />
-            <div className="mt-8 space-y-6 text-lg leading-relaxed text-charcoal-light">
+            <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/70">
               <Reveal>
                 <p>
                   NTA Group is headquartered in the United Arab Emirates — a
@@ -104,13 +104,13 @@ export default function AboutPage() {
         <RevealGroup className="mx-auto mt-16 grid max-w-5xl gap-x-12 gap-y-9 sm:grid-cols-2">
           {aboutPoints.map((p) => (
             <Reveal key={p.title}>
-              <div className="flex gap-4 border-t border-line pt-6">
-                <Check className="mt-1 h-5 w-5 shrink-0 text-sand-500" />
+              <div className="flex gap-4 border-t border-white/15 pt-6">
+                <Check className="mt-1 h-5 w-5 shrink-0 text-white" />
                 <div>
-                  <h3 className="font-display text-lg font-semibold text-ink">
+                  <h3 className="font-display text-lg font-semibold text-white">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-charcoal-light">
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">
                     {p.desc}
                   </p>
                 </div>
