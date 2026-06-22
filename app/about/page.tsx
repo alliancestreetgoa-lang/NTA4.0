@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { Reveal, RevealGroup } from "@/components/Reveal";
+import { asset } from "@/lib/asset";
 import { aboutPoints } from "@/lib/data";
 import { site } from "@/lib/site";
 
@@ -64,7 +65,7 @@ export default function AboutPage() {
             <Reveal delay={1}>
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=1400&q=80"
+                  src={asset("/images/about-trade.jpg")}
                   alt="Global trade and shipping"
                   fill
                   className="object-cover"
