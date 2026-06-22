@@ -3,6 +3,7 @@ import { Sprout } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { bangladeshFertilizers } from "@/lib/data";
+import { asset } from "@/lib/asset";
 
 const tierStyle: Record<string, string> = {
   Major: "bg-ink text-white",
@@ -37,14 +38,14 @@ export function BangladeshFertilizers() {
             f.poster ? (
               <Reveal key={f.name}>
                 <a
-                  href={f.poster}
+                  href={asset(f.poster)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group block h-full overflow-hidden border border-line bg-white transition-shadow duration-500 hover:shadow-[0_24px_60px_-30px_rgba(10,10,11,0.35)]"
                 >
                   <div className="relative aspect-[3/4] overflow-hidden">
                     <Image
-                      src={f.poster}
+                      src={asset(f.poster)}
                       alt={`${f.name} — product information`}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"

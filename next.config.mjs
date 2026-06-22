@@ -9,6 +9,11 @@ const nextConfig = {
   reactStrictMode: true,
   basePath,
   trailingSlash: true,
+  // Exposed to components so local <Image> sources can be base-path-prefixed
+  // (next/image does not auto-prefix basePath for unoptimized static exports).
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     // Static export cannot use the Next.js image optimizer.
     unoptimized: true,

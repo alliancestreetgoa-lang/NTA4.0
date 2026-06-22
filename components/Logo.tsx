@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 
 // Official NTA Group logo — used exactly as supplied (white mark + wordmark on
 // its original gray background). Colors are never altered; the artwork is only
@@ -20,7 +21,7 @@ export function Logo({
         className={`inline-flex overflow-hidden rounded-lg ${className}`}
       >
         <Image
-          src="/logo.png"
+          src={asset("/logo.png")}
           alt="NTA Group"
           width={1110}
           height={761}

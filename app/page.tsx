@@ -17,6 +17,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTABand } from "@/components/CTABand";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { divisions, whyNta, aboutPoints, services } from "@/lib/data";
+import { asset } from "@/lib/asset";
 
 const fImg = (id: string) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=300&q=70`;
@@ -136,7 +137,7 @@ export default function HomePage() {
             {/* Plant image — fades into the background on the right (desktop) */}
             <div className="absolute inset-y-0 right-0 hidden w-[58%] lg:block">
               <Image
-                src="/fertilizers/flagship-plant.png"
+                src={asset("/fertilizers/flagship-plant.png")}
                 alt="Seedling with fertilizer granules in soil"
                 fill
                 priority
@@ -174,7 +175,7 @@ export default function HomePage() {
             <Reveal className="mt-8 lg:hidden">
               <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
                 <Image
-                  src="/fertilizers/flagship-plant.png"
+                  src={asset("/fertilizers/flagship-plant.png")}
                   alt="Seedling with fertilizer granules in soil"
                   fill
                   className="object-cover"
