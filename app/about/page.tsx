@@ -64,7 +64,7 @@ export default function AboutPage() {
             <Reveal delay={1}>
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1518434304314-1f6e0e8d39e2?auto=format&fit=crop&w=1400&q=80"
+                  src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=1400&q=80"
                   alt="Global trade and shipping"
                   fill
                   className="object-cover"

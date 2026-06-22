@@ -42,7 +42,7 @@ export default function SustainabilityPage() {
             <Reveal delay={3}>
               <div className="mt-10 relative aspect-[16/10] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=80"
+                  src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1400&q=80"
                   alt="Sustainable landscape"
                   fill
                   className="object-cover"

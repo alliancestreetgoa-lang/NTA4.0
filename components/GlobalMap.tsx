@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { asset } from "@/lib/asset";
 
-const EARTH =
-  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80";
+const EARTH = asset("/world-trade-map.png");
 
 // Approximate positions on a 1000 x 500 stylised map canvas
 type Node = {
@@ -14,15 +14,20 @@ type Node = {
   x: number;
   y: number;
   hub?: boolean;
+  // Extra vertical offset for the label, to avoid collisions between close nodes.
+  labelDy?: number;
 };
 
+// Positions tuned to world-trade-map.png. The 1672x941 (~16:9) image is shown
+// with object-cover inside the 2:1 viewBox, cropping ~5.6% off top & bottom, so
+// y = (imageYfraction - 0.0556) * 562.5 and x = imageXfraction * 1000.
 const nodes: Node[] = [
-  { id: "uae", label: "UAE", x: 612, y: 232, hub: true },
-  { id: "gcc", label: "GCC", x: 588, y: 218 },
-  { id: "europe", label: "Europe", x: 508, y: 150 },
-  { id: "africa", label: "Africa", x: 520, y: 300 },
-  { id: "india", label: "India", x: 690, y: 248 },
-  { id: "sea", label: "Southeast Asia", x: 770, y: 300 },
+  { id: "uae", label: "UAE", x: 607, y: 217, hub: true },
+  { id: "gcc", label: "GCC", x: 582, y: 177, labelDy: -14 },
+  { id: "europe", label: "Europe", x: 451, y: 125 },
+  { id: "africa", label: "Africa", x: 520, y: 269 },
+  { id: "india", label: "India", x: 662, y: 215 },
+  { id: "sea", label: "Southeast Asia", x: 755, y: 240 },
 ];
 
 const hub = nodes[0];
@@ -93,18 +98,6 @@ export function GlobalMap() {
             onMouseLeave={() => setActive(null)}
             className="cursor-pointer"
           >
-            {n.hub && (
-              <motion.circle
-                cx={n.x}
-                cy={n.y}
-                fill="none"
-                stroke="#C9B596"
-                strokeWidth={1.2}
-                initial={{ r: 7, opacity: 0.7 }}
-                animate={{ r: [7, 26], opacity: [0.7, 0] }}
-                transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
-              />
-            )}
             <motion.circle
               cx={n.x}
               cy={n.y}
@@ -117,7 +110,7 @@ export function GlobalMap() {
             />
             <motion.text
               x={n.x}
-              y={n.y - 16}
+              y={n.y - 16 + (n.labelDy ?? 0)}
               textAnchor="middle"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

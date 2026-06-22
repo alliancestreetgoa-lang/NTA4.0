@@ -210,10 +210,10 @@ export default function HomePage() {
                         sizes="80px"
                       />
                     </div>
-                    <div className="mt-3 font-display text-sm font-semibold leading-tight">
+                    <div className="mt-3 font-display text-sm font-semibold leading-tight [text-shadow:0_1px_8px_rgba(10,10,11,0.85)]">
                       {p.name}
                     </div>
-                    <div className="mt-1 text-[0.7rem] leading-tight text-sand-400">
+                    <div className="mt-1 text-[0.7rem] leading-tight text-sand-300 [text-shadow:0_1px_8px_rgba(10,10,11,0.85)]">
                       {p.grade}
                     </div>
                   </div>
