@@ -8,8 +8,8 @@ export const site = {
   email: "trading@ntagroup.com",
   phone: "+971 4 000 0000",
   address: {
-    line1: "Dubai World Trade Centre",
-    line2: "Sheikh Zayed Road",
+    line1: "Unit No. 2402, HDS Business Center",
+    line2: "Plot No. JLT-PH1-M1A, Jumeirah Lakes Towers",
     city: "Dubai",
     country: "United Arab Emirates",
   },
