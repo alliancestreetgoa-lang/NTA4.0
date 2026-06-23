@@ -5,8 +5,8 @@ export const site = {
   description:
     "NTA Group is a UAE-based global commodity trading company connecting producers, suppliers, manufacturers and global markets through reliable trading solutions across chemical fertilizers, energy, oil, petrochemicals and agricultural commodities.",
   url: "https://ntagroup.com",
-  email: "trading@ntagroup.com",
-  phone: "+971 4 000 0000",
+  email: "tikhonov@ntagroup.ae",
+  phone: "+971 52 605 9222",
   address: {
     line1: "Unit No. 2402, HDS Business Center",
     line2: "Plot No. JLT-PH1-M1A, Jumeirah Lakes Towers",
