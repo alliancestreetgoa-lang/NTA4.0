@@ -30,7 +30,6 @@ export default function AboutPage() {
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-7">
             <SectionHeading
-              eyebrow="Who we are"
               title="A diversified global commodity trading company."
             />
             <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/70">
@@ -78,7 +77,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="border-y border-line bg-ink text-white">
+      <section className="border-y border-white/10 bg-ink text-white">
         <div className="container-px py-16">
           <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
             {site.stats.map((s, i) => (
@@ -87,7 +86,7 @@ export default function AboutPage() {
                   <div className="font-display text-4xl font-semibold md:text-5xl">
                     {s.value}
                   </div>
-                  <div className="mt-2 text-sm text-white/55">{s.label}</div>
+                  <div className="mt-2 text-sm text-white/70">{s.label}</div>
                 </div>
               </Reveal>
             ))}
@@ -98,7 +97,6 @@ export default function AboutPage() {
       {/* What defines us */}
       <section className="container-px py-24 md:py-32">
         <SectionHeading
-          eyebrow="What defines us"
           title="Principles that guide every transaction."
           align="center"
         />

@@ -16,10 +16,24 @@ export function Navbar() {
     setOpen(false);
   }, [pathname]);
 
+  // Escape closes the mobile menu; lock body scroll while it is open.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-sand-500 backdrop-blur-xl transition-all duration-500 ease-premium"
+        className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/70 backdrop-blur-xl transition-all duration-500 ease-premium"
       >
         <div className="container-px flex h-16 items-center justify-between">
           <Logo variant="dark" />
@@ -59,8 +73,10 @@ export function Navbar() {
 
           <button
             onClick={() => setOpen(true)}
-            className="lg:hidden"
+            className="rounded-sm lg:hidden"
             aria-label="Open menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
             <Menu className="h-6 w-6 text-white" />
           </button>
@@ -70,6 +86,10 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -77,7 +97,11 @@ export function Navbar() {
           >
             <div className="container-px flex h-16 items-center justify-between">
               <Logo />
-              <button onClick={() => setOpen(false)} aria-label="Close menu">
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="rounded-sm"
+              >
                 <X className="h-6 w-6 text-ink" />
               </button>
             </div>

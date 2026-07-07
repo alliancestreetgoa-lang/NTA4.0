@@ -51,7 +51,7 @@ export function DivisionCard({
         className="group relative flex h-full flex-col overflow-hidden border border-line bg-white p-8 card-hover hover:border-ink/20 hover:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.25)]"
       >
         {primary && (
-          <span className="absolute right-5 top-5 rounded-full bg-sand-100 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-sand-500">
+          <span className="absolute right-5 top-5 rounded-full bg-accent px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink">
             Flagship
           </span>
         )}

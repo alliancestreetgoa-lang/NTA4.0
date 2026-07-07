@@ -28,7 +28,6 @@ export default function SustainabilityPage() {
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
             <SectionHeading
-              eyebrow="Our commitment"
               title="Sustainability built into how we trade."
             />
             <Reveal delay={2}>
@@ -62,7 +61,7 @@ export default function SustainabilityPage() {
                     </span>
                     <div className="flex-1">
                       <div className="flex items-center gap-3">
-                        <Leaf className="h-5 w-5 text-sand-500" strokeWidth={1.5} />
+                        <Leaf className="h-5 w-5 text-accent-deep" strokeWidth={1.5} />
                         <h3 className="font-display text-xl font-semibold text-ink">
                           {s.title}
                         </h3>
@@ -80,11 +79,11 @@ export default function SustainabilityPage() {
       </section>
 
       {/* Pledge */}
-      <section className="border-t border-line bg-ink text-white">
+      <section className="border-t border-white/10 bg-ink text-white">
         <div className="container-px py-24 md:py-28">
           <div className="mx-auto max-w-4xl text-center">
             <Reveal>
-              <span className="eyebrow mx-auto text-white/60 [&::before]:bg-sand-400">
+              <span className="eyebrow mx-auto text-white/70">
                 Our pledge
               </span>
             </Reveal>

@@ -26,10 +26,7 @@ export default function ContactPage() {
           {/* Info side */}
           <div className="lg:col-span-4">
             <Reveal>
-              <span className="eyebrow">UAE Headquarters</span>
-            </Reveal>
-            <Reveal delay={1}>
-              <h2 className="mt-5 font-display text-3xl font-semibold text-white">
+              <h2 className="font-display text-3xl font-semibold text-white">
                 Let&apos;s build a trading partnership.
               </h2>
             </Reveal>
@@ -61,7 +58,7 @@ export default function ContactPage() {
               ].map((c, i) => (
                 <Reveal key={c.label} delay={i}>
                   <div className="flex gap-4 border-t border-white/15 pt-6">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/15 bg-sand-600 text-white">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/15 bg-white/10 text-white">
                       <c.icon className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                     <div>
@@ -87,9 +84,9 @@ export default function ContactPage() {
             </div>
 
             <Reveal delay={2}>
-              <div className="mt-10 flex items-start gap-3 border-l-2 border-white/40 bg-sand-600 p-5">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-white" strokeWidth={1.5} />
-                <p className="text-sm leading-relaxed text-white/70">
+              <div className="mt-10 flex items-start gap-3 rounded-sm border border-white/15 bg-ink-900 p-5">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" strokeWidth={1.5} />
+                <p className="text-sm leading-relaxed text-white/80">
                   Strategically located in Dubai — at the crossroads of European,
                   Asian and African trade routes.
                 </p>

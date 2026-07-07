@@ -10,17 +10,14 @@ export function CTABand() {
         className="pointer-events-none absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full opacity-20 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(201,181,150,0.55) 0%, rgba(201,181,150,0) 70%)",
+            "radial-gradient(circle, rgba(109,139,255,0.42) 0%, rgba(109,139,255,0) 70%)",
         }}
       />
       <div className="container-px relative py-24 md:py-32">
         <div className="grid items-end gap-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <Reveal>
-              <span className="eyebrow text-white/60">Let&apos;s trade</span>
-            </Reveal>
-            <Reveal delay={1}>
-              <h2 className="mt-6 text-display-lg font-display font-semibold leading-[1.04] text-balance">
+              <h2 className="text-display-lg font-display font-semibold leading-[1.04] text-balance">
                 Partner with a global commodity trading company built on trust.
               </h2>
             </Reveal>

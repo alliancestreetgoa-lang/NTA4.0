@@ -23,7 +23,7 @@ export default function CommoditiesPage() {
       />
 
       {/* Quick nav */}
-      <section className="sticky top-16 z-30 border-b border-white/15 bg-sand-500/95 backdrop-blur-xl">
+      <section className="sticky top-16 z-30 border-b border-white/10 bg-ink/90 backdrop-blur-xl">
         <div className="container-px flex gap-6 overflow-x-auto py-4">
           {divisions.map((d) => (
             <a
@@ -45,8 +45,8 @@ export default function CommoditiesPage() {
             key={d.slug}
             id={d.slug}
             className={`scroll-mt-36 ${
-              d.primary ? "bg-sand-700" : idx % 2 === 1 ? "bg-sand-600" : "bg-sand-500"
-            } border-b border-white/15`}
+              d.primary ? "bg-ink-800" : idx % 2 === 1 ? "bg-ink-900" : "bg-ink"
+            } border-b border-white/10`}
           >
             <div className="container-px py-24 md:py-28">
               <div
@@ -99,10 +99,10 @@ export default function CommoditiesPage() {
 
                   {/* Capability */}
                   <Reveal delay={4}>
-                    <div className="mt-8 flex gap-3 border-l-2 border-white/50 bg-white/5 p-5">
-                      <Globe2 className="mt-0.5 h-5 w-5 shrink-0 text-white" strokeWidth={1.5} />
+                    <div className="mt-8 flex gap-3 rounded-sm border border-accent/25 bg-accent/[0.06] p-5">
+                      <Globe2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" strokeWidth={1.5} />
                       <div>
-                        <div className="text-xs font-medium uppercase tracking-[0.16em] text-white/70">
+                        <div className="text-xs font-medium uppercase tracking-[0.16em] text-accent">
                           Global Supply Capability
                         </div>
                         <p className="mt-1.5 text-sm leading-relaxed text-white/70">

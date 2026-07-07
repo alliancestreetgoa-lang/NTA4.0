@@ -19,7 +19,7 @@ const items = [
 
 export function Marquee() {
   return (
-    <section className="border-y border-white/15 bg-sand-600 py-6">
+    <section className="border-y border-white/10 bg-ink-900 py-6">
       <div className="relative flex overflow-hidden">
         <div className="flex shrink-0 animate-marquee items-center gap-12 pr-12">
           {[...items, ...items].map((item, i) => (

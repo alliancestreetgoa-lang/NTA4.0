@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { type ReactNode } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -50,6 +50,11 @@ export function Reveal({
   as = "div",
 }: RevealProps) {
   const MotionTag = motion[as];
+  const reduce = useReducedMotion();
+  // Reduced motion: render fully visible, no transform. Never gate content.
+  if (reduce) {
+    return <MotionTag className={className}>{children}</MotionTag>;
+  }
   return (
     <MotionTag
       className={className}
@@ -78,6 +83,10 @@ export function RevealGroup({
   children: ReactNode;
   className?: string;
 }) {
+  const reduce = useReducedMotion();
+  if (reduce) {
+    return <div className={className}>{children}</div>;
+  }
   return (
     <motion.div
       className={className}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Archivo } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -11,9 +11,12 @@ const inter = Inter({
   display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+// Display face: a grotesque with an industrial, mechanical skeleton that reads
+// clearly against Inter's humanist body — the two-font split now does real work.
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -83,7 +86,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
+    <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
       <body>
         <script
           type="application/ld+json"

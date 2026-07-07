@@ -6,7 +6,7 @@ import { divisions } from "@/lib/data";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/15 bg-sand-500 text-white">
+    <footer className="border-t border-white/10 bg-ink-900 text-white">
       <div className="container-px py-20">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">

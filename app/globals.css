@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --font-inter: "Inter", system-ui, sans-serif;
-    --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
+    --font-display: "Archivo", system-ui, sans-serif;
   }
 
   html {
@@ -15,27 +15,45 @@
   }
 
   body {
-    @apply bg-sand-500 text-white antialiased;
+    @apply bg-ink text-white antialiased;
     font-feature-settings: "ss01", "cv01", "cv11";
   }
 
   ::selection {
-    @apply bg-white text-ink;
+    @apply bg-accent text-ink;
   }
 
-  /* Refined scrollbar */
+  /* Keyboard focus: one visible, consistent ring everywhere. Never rely on a
+     bare outline removal without a replacement. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-ink;
+  }
+
+  /* Refined scrollbar (dark) */
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-sand-600;
+    @apply bg-ink-900;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-sand-700 rounded-full;
-    border: 3px solid #5E5E5E;
+    @apply bg-ink-700 rounded-full;
+    border: 3px solid #161616;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-ink;
+    @apply bg-sand-600;
+  }
+
+  /* Motion is an enhancement, never a gate. Honour the OS preference. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -45,20 +63,24 @@
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2.5 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/60;
+    @apply inline-flex items-center gap-2.5 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/70;
   }
 
+  /* The kicker rule now carries the one brand accent — a single quiet brass
+     tick, used deliberately rather than as scaffolding above every section. */
   .eyebrow::before {
     content: "";
-    @apply h-px w-8 bg-white/40;
+    @apply h-px w-8 bg-accent;
   }
 
   .btn {
     @apply inline-flex items-center justify-center gap-2 text-sm font-medium transition-all duration-300 ease-premium;
   }
 
+  /* Primary = the brass accent, so the primary action is finally the most
+     prominent thing on a dark surface (previously near-black on near-black). */
   .btn-primary {
-    @apply btn bg-ink px-7 py-4 text-white hover:bg-charcoal;
+    @apply btn bg-accent px-7 py-4 text-ink hover:bg-accent-soft;
   }
 
   .btn-outline {

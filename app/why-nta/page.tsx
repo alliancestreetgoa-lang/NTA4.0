@@ -63,10 +63,9 @@ export default function WhyNtaPage() {
       </section>
 
       {/* Process band */}
-      <section className="border-y border-white/15 bg-sand-600">
+      <section className="border-y border-white/10 bg-ink-900">
         <div className="container-px py-24 md:py-32">
           <SectionHeading
-            eyebrow="How we work"
             title="A disciplined approach to every trade."
             align="center"
           />

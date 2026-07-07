@@ -1,9 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
+// CSS-driven entrance (see Hero) so the H1 paints on the first frame — no
+// flash of an empty hero on navigation. Reduced-motion is handled globally.
 export function PageHero({
   eyebrow,
   title,
@@ -27,33 +23,22 @@ export function PageHero({
       </div>
 
       <div className="container-px relative w-full pb-16 pt-24 md:pb-20">
-        <motion.span
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease }}
-          className="eyebrow text-white/70 [&::before]:bg-sand-400"
-        >
-          {eyebrow}
-        </motion.span>
+        <span className="eyebrow animate-fade-up text-white/80">{eyebrow}</span>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease }}
-          className="mt-6 max-w-4xl text-display-lg font-display font-semibold text-white text-balance"
+        <h1
+          className="mt-6 max-w-4xl animate-fade-up text-display-lg font-display font-semibold text-white text-balance"
+          style={{ animationDelay: "0.08s" }}
         >
           {title}
-        </motion.h1>
+        </h1>
 
         {intro && (
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.22, ease }}
-            className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70"
+          <p
+            className="mt-6 max-w-2xl animate-fade-up text-lg leading-relaxed text-white/80"
+            style={{ animationDelay: "0.18s" }}
           >
             {intro}
-          </motion.p>
+          </p>
         )}
       </div>
     </section>

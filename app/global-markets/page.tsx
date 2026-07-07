@@ -28,12 +28,7 @@ export default function GlobalMarketsPage() {
         <div className="container-px py-20 md:py-28">
           <div className="mb-12 max-w-2xl">
             <Reveal>
-              <span className="eyebrow text-white/60 [&::before]:bg-sand-400">
-                Trade routes & shipping lanes
-              </span>
-            </Reveal>
-            <Reveal delay={1}>
-              <h2 className="mt-5 text-display-md font-display font-semibold text-white">
+              <h2 className="text-display-md font-display font-semibold text-white">
                 Six key regions. One connected network.
               </h2>
             </Reveal>
@@ -47,7 +42,6 @@ export default function GlobalMarketsPage() {
       {/* Region cards */}
       <section className="container-px py-24 md:py-32">
         <SectionHeading
-          eyebrow="Where we operate"
           title="Markets we serve worldwide."
         />
         <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

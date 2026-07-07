@@ -20,23 +20,6 @@ import { Parallax } from "@/components/Parallax";
 import { divisions, whyNta, aboutPoints, services } from "@/lib/data";
 import { asset } from "@/lib/asset";
 
-const fImg = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=300&q=70`;
-
-// Flagship fertilizer line-up (circular product chips with grades)
-const flagshipGrades = [
-  { name: "Urea 46%", grade: "46-0-0 · 46% N", img: fImg("photo-1710223221719-6251cb1b5c5b") },
-  { name: "DAP", grade: "18-46-0 · N + P", img: fImg("photo-1656581417767-5eb8ecd8bf3c") },
-  { name: "MAP", grade: "11-52-0 · 52% P₂O₅", img: fImg("photo-1774351922689-896a9340aa7b") },
-  { name: "NPK", grade: "Various grades", img: fImg("photo-1537155023352-cda15844e56d") },
-  { name: "Potash (MOP)", grade: "60% K₂O", img: fImg("photo-1641543764196-f5e42a65a0db") },
-  { name: "SOP", grade: "50% K₂O · 18% S", img: fImg("photo-1559924632-fff3ee79c1dc") },
-  { name: "CAN", grade: "27% N", img: fImg("photo-1632858918575-f865ab926cc0") },
-  { name: "Ammonium Sulphate", grade: "21% N · 24% S", img: fImg("photo-1612708015264-5f13c037c9cd") },
-  { name: "Sulphur", grade: "90% S (min.)", img: fImg("photo-1537870148480-ed9ff56a8148") },
-  { name: "TSP", grade: "0-46-0 · 46% P₂O₅", img: fImg("photo-1542308744-011fa9a309f7") },
-];
-
 const flagshipFeatures = [
   { icon: Globe2, title: "Global sourcing network", desc: "Direct access to producers across continents." },
   { icon: Warehouse, title: "Reliable supply & logistics", desc: "Vessel and container shipments worldwide." },
@@ -56,7 +39,6 @@ export default function HomePage() {
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
             <SectionHeading
-              eyebrow="About NTA Group"
               title="A global commodity trading company, rooted in the UAE."
               direction="left"
             />
@@ -80,7 +62,7 @@ export default function HomePage() {
 
           <div className="lg:col-span-7">
             <RevealGroup className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
-              {aboutPoints.map((p) => (
+              {aboutPoints.slice(0, 4).map((p) => (
                 <Reveal key={p.title} direction="right">
                   <div className="border-t border-white/15 pt-5">
                     <div className="flex items-center gap-2.5">
@@ -101,11 +83,10 @@ export default function HomePage() {
       </section>
 
       {/* BUSINESS DIVISIONS */}
-      <section className="border-y border-white/15 bg-sand-600">
+      <section className="border-y border-white/10 bg-ink-900">
         <div className="container-px py-24 md:py-32">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <SectionHeading
-              eyebrow="Core Business Divisions"
               title="Six divisions. One trusted global trading partner."
             />
             <Reveal delay={2}>
@@ -160,21 +141,16 @@ export default function HomePage() {
           {/* Header: title + intro */}
           <div className="max-w-2xl">
             <Reveal direction="left">
-              <span className="eyebrow text-white/60 [&::before]:bg-lime-400">
-                Primary Focus · Flagship Division
-              </span>
-            </Reveal>
-            <Reveal delay={1} direction="left">
-              <h2 className="mt-6 text-display-md font-display font-semibold text-balance">
+              <h2 className="text-display-md font-display font-semibold text-balance">
                 Chemical Fertilizers Trading
               </h2>
             </Reveal>
             <Reveal delay={2} direction="left">
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/65">
                 Chemical fertilizers are the cornerstone of NTA Group. We{" "}
-                <span className="font-medium text-lime-400">source</span>,{" "}
-                <span className="font-medium text-lime-400">supply</span> and{" "}
-                <span className="font-medium text-lime-400">distribute</span> the
+                <span className="font-medium text-accent">source</span>,{" "}
+                <span className="font-medium text-accent">supply</span> and{" "}
+                <span className="font-medium text-accent">distribute</span> the
                 full spectrum of nitrogen, phosphate, potash and specialty
                 fertilizers to farmers, blenders and distributors across global
                 agricultural markets.
@@ -195,58 +171,30 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          {/* Product chips + capability features */}
-          <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-16">
-            <RevealGroup className="grid grid-cols-2 gap-x-5 gap-y-6 sm:grid-cols-3 md:grid-cols-5 lg:col-span-8">
-              {flagshipGrades.map((p) => (
-                <Reveal key={p.name}>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="relative h-16 w-16 overflow-hidden rounded-full border border-white/15 ring-1 ring-white/5 transition-transform duration-500 hover:scale-105">
-                      <Image
-                        src={p.img}
-                        alt={p.name}
-                        fill
-                        className="object-cover"
-                        sizes="80px"
-                      />
-                    </div>
-                    <div className="mt-3 font-display text-sm font-semibold leading-tight [text-shadow:0_1px_8px_rgba(10,10,11,0.85)]">
-                      {p.name}
-                    </div>
-                    <div className="mt-1 text-[0.7rem] leading-tight text-sand-300 [text-shadow:0_1px_8px_rgba(10,10,11,0.85)]">
-                      {p.grade}
+          {/* Capability features */}
+          <RevealGroup className="mt-12 grid gap-8 border-t border-white/10 pt-10 sm:grid-cols-3">
+            {flagshipFeatures.map((f) => {
+              const Icon = f.icon;
+              return (
+                <Reveal key={f.title}>
+                  <div className="flex gap-4">
+                    <Icon
+                      className="h-6 w-6 shrink-0 text-accent"
+                      strokeWidth={1.5}
+                    />
+                    <div>
+                      <div className="font-display text-base font-semibold [text-shadow:0_1px_8px_rgba(10,10,11,0.7)]">
+                        {f.title}
+                      </div>
+                      <div className="mt-1 text-sm leading-relaxed text-white/80 [text-shadow:0_1px_8px_rgba(10,10,11,0.7)]">
+                        {f.desc}
+                      </div>
                     </div>
                   </div>
                 </Reveal>
-              ))}
-            </RevealGroup>
-
-            <div className="lg:col-span-4 lg:border-l lg:border-white/10 lg:pl-12">
-              <RevealGroup className="space-y-6">
-                {flagshipFeatures.map((f) => {
-                  const Icon = f.icon;
-                  return (
-                    <Reveal key={f.title}>
-                      <div className="flex gap-4 border-b border-white/10 pb-6 last:border-0 last:pb-0">
-                        <Icon
-                          className="h-6 w-6 shrink-0 text-white"
-                          strokeWidth={1.5}
-                        />
-                        <div>
-                          <div className="font-display text-base font-semibold [text-shadow:0_1px_8px_rgba(10,10,11,0.7)]">
-                            {f.title}
-                          </div>
-                          <div className="mt-1 text-sm leading-relaxed text-white/80 [text-shadow:0_1px_8px_rgba(10,10,11,0.7)]">
-                            {f.desc}
-                          </div>
-                        </div>
-                      </div>
-                    </Reveal>
-                  );
-                })}
-              </RevealGroup>
-            </div>
-          </div>
+              );
+            })}
+          </RevealGroup>
 
           {/* CTA + tagline */}
           <div className="mt-10 flex flex-col items-start justify-between gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center">
@@ -270,12 +218,11 @@ export default function HomePage() {
       {/* WHY NTA */}
       <section className="container-px py-24 md:py-32">
         <SectionHeading
-          eyebrow="Why NTA Group"
           title="The advantages of a trusted global trading partner."
           align="center"
         />
         <RevealGroup className="mt-16 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-          {whyNta.map((item, i) => {
+          {whyNta.slice(0, 3).map((item, i) => {
             const icons = [Globe2, ShieldCheck, Check, Sparkles, ShieldCheck, Globe2];
             const Icon = icons[i % icons.length];
             return (
@@ -296,15 +243,20 @@ export default function HomePage() {
             );
           })}
         </RevealGroup>
+        <Reveal className="mt-12 text-center">
+          <Link href="/why-nta" className="link-underline mx-auto">
+            See all six reasons to partner with NTA
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </Reveal>
       </section>
 
       {/* COMMODITY SOLUTIONS / SERVICES */}
-      <section className="border-y border-white/15 bg-sand-600">
+      <section className="border-y border-white/10 bg-ink-900">
         <div className="container-px py-24 md:py-32">
           <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
             <div className="lg:col-span-4">
               <SectionHeading
-                eyebrow="Global Commodity Solutions"
                 title="End-to-end services across the value chain."
                 direction="left"
               />
@@ -315,11 +267,17 @@ export default function HomePage() {
                   flows reliable.
                 </p>
               </Reveal>
+              <Reveal delay={3} direction="left">
+                <Link href="/commodities" className="link-underline mt-8">
+                  Explore the full commodity portfolio
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </Reveal>
             </div>
 
             <div className="lg:col-span-8">
               <RevealGroup className="grid gap-x-10 gap-y-7 sm:grid-cols-2">
-                {services.map((s) => (
+                {services.slice(0, 6).map((s) => (
                   <Reveal key={s.title} direction="right">
                     <div className="flex gap-4 border-t border-white/15 pt-5">
                       <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-ink">
