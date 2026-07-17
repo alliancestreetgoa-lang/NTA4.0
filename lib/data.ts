@@ -30,18 +30,15 @@ export type Division = {
 };
 
 // High-end editorial photography (Unsplash)
+// Vendored locally (public/images/vendor) so the deployed static site never
+// depends on an external image host — hotlinked Unsplash was failing to load.
 const IMG = {
-  fertilizer:
-    "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1600&q=80",
-  energy:
-    "https://images.unsplash.com/photo-1598408745613-178751e2ccde?auto=format&fit=crop&w=1600&q=80",
-  oil: "https://images.unsplash.com/photo-1509390288171-ce2088f7d08e?auto=format&fit=crop&w=1600&q=80",
-  petrochem:
-    "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1600&q=80",
-  grains:
-    "https://images.unsplash.com/photo-1621956838481-f8f616950454?auto=format&fit=crop&w=1600&q=80",
-  solutions:
-    "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1600&q=80",
+  fertilizer: "/images/vendor/fertilizer-soil.jpg",
+  energy: "/images/vendor/energy-lng.jpg",
+  oil: "/images/vendor/oil-refinery.jpg",
+  petrochem: "/images/vendor/petrochemical.jpg",
+  grains: "/images/vendor/grains-harvest.jpg",
+  solutions: "/images/vendor/container-port.jpg",
 };
 
 export const divisions: Division[] = [
@@ -447,8 +444,11 @@ export type Fertilizer = {
   poster?: string;
 };
 
-const FIMG = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=72`;
+// The fertilizer `.image` field is not rendered anywhere (cards use `.poster`);
+// kept for the type shape but pointed at a local asset so no external image
+// host is referenced anywhere in the bundle. The id arg is retained for the
+// callers below but intentionally unused.
+const FIMG = (_id: string) => "/images/vendor/fertilizer-soil.jpg";
 
 export const bangladeshFertilizers: Fertilizer[] = [
   {

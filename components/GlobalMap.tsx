@@ -6,7 +6,7 @@ import { useId, useState } from "react";
 import { asset } from "@/lib/asset";
 
 const EARTH = asset("/world-trade-map.png");
-const BRASS = "#6D8BFF";
+const BRASS = "#D9A84E";
 
 type Node = {
   id: string;
@@ -66,7 +66,7 @@ export function GlobalMap() {
         };
 
   return (
-    <div className="relative w-full overflow-hidden rounded-sm border border-white/10 bg-ink">
+    <div className="relative w-full overflow-hidden rounded-sm border border-ink/10 bg-ink">
       <Image
         src={EARTH}
         alt="World map showing NTA Group's trade network radiating from Dubai across the GCC, Europe, Africa, India and Southeast Asia"
@@ -153,13 +153,13 @@ export function GlobalMap() {
         ))}
       </svg>
 
-      <div className="relative z-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/10 bg-ink/70 px-6 py-4 text-xs text-white/70 backdrop-blur">
+      <div className="relative z-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-ink/10 bg-white px-6 py-4 text-xs text-ink/70 backdrop-blur">
         <span className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-accent" /> Trading hub —
           Dubai, UAE
         </span>
         <span className="flex items-center gap-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-white" /> Active markets
+          <span className="h-2.5 w-2.5 rounded-full bg-ink" /> Active markets
         </span>
         <span className="flex items-center gap-2">
           <span className="inline-block h-px w-6 border-t border-dashed border-accent" />

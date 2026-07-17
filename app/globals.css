@@ -6,17 +6,53 @@
   :root {
     --font-inter: "Inter", system-ui, sans-serif;
     --font-display: "Archivo", system-ui, sans-serif;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
   }
 
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    @apply font-sans;
   }
 
   body {
-    @apply bg-ink text-white antialiased;
+    @apply antialiased bg-background text-foreground;
     font-feature-settings: "ss01", "cv01", "cv11";
+    /* Scroll-reveal transforms (translateX offsets) extend the scrollable area
+       until they animate in; clip so they never cause a horizontal scrollbar. */
+    overflow-x: clip;
   }
 
   ::selection {
@@ -26,22 +62,22 @@
   /* Keyboard focus: one visible, consistent ring everywhere. Never rely on a
      bare outline removal without a replacement. */
   :focus-visible {
-    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-ink;
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
   }
 
-  /* Refined scrollbar (dark) */
+  /* Refined scrollbar (light) */
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-ink-900;
+    @apply bg-sand-100;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-ink-700 rounded-full;
-    border: 3px solid #161616;
+    @apply bg-sand-300 rounded-full;
+    border: 3px solid #F4F2ED;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-sand-600;
+    @apply bg-sand-400;
   }
 
   /* Motion is an enhancement, never a gate. Honour the OS preference. */
@@ -55,6 +91,48 @@
       scroll-behavior: auto !important;
     }
   }
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  .dark {
+    /* Trading-desk dark: warm near-blacks + brass primary (see BRIEF ## Design).
+       Muted text is a solid hex, not an alpha, so contrast stays ≥4.5:1. */
+    --background: #0A0A09;
+    --foreground: #ECEAE4;
+    --card: #161512;
+    --card-foreground: #ECEAE4;
+    --popover: #161512;
+    --popover-foreground: #ECEAE4;
+    --primary: #D9A84E;
+    --primary-foreground: #0A0A09;
+    --secondary: #1C1B18;
+    --secondary-foreground: #ECEAE4;
+    --muted: #1C1B18;
+    --muted-foreground: #A6A29A;
+    --accent: #1C1B18;
+    --accent-foreground: #ECEAE4;
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: rgba(236, 234, 228, 0.14);
+    --input: rgba(236, 234, 228, 0.18);
+    --ring: #D9A84E;
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+  }
+  * {
+    @apply border-border;
+  }
 }
 
 @layer components {
@@ -62,12 +140,12 @@
     @apply mx-auto w-full max-w-container px-6 md:px-10 lg:px-16;
   }
 
+  /* Manifest label: mono, like a line item on a cargo document. Used
+     deliberately, not as scaffolding above every section. */
   .eyebrow {
-    @apply inline-flex items-center gap-2.5 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-white/70;
+    @apply inline-flex items-center gap-2.5 font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-sand-500;
   }
 
-  /* The kicker rule now carries the one brand accent — a single quiet brass
-     tick, used deliberately rather than as scaffolding above every section. */
   .eyebrow::before {
     content: "";
     @apply h-px w-8 bg-accent;
@@ -84,7 +162,7 @@
   }
 
   .btn-outline {
-    @apply btn border border-white/30 px-7 py-4 text-white hover:border-white hover:bg-white hover:text-ink;
+    @apply btn border border-ink/25 px-7 py-4 text-ink hover:border-ink hover:bg-ink hover:text-white;
   }
 
   .btn-light {

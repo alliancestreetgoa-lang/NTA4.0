@@ -23,19 +23,19 @@ export function SectionHeading({
     >
       {eyebrow && (
         <Reveal direction={dir}>
-          <span className={`eyebrow ${light ? "text-white/60" : ""}`}>
+          <span className={`eyebrow ${light ? "text-ink/60" : ""}`}>
             {eyebrow}
           </span>
         </Reveal>
       )}
       <Reveal delay={1} direction={dir}>
-        <h2 className="mt-5 text-display-md font-display font-semibold text-balance text-white">
+        <h2 className="mt-5 text-display-md font-display font-semibold text-balance text-ink">
           {title}
         </h2>
       </Reveal>
       {intro && (
         <Reveal delay={2} direction={dir}>
-          <p className="mt-6 text-lg leading-relaxed text-white/70">{intro}</p>
+          <p className="mt-6 text-lg leading-relaxed text-ink/70">{intro}</p>
         </Reveal>
       )}
     </div>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone, Clock, Building2 } from "lucide-react";
-import { PageHero } from "@/components/PageHero";
+import { Building2, Mail, Phone, Clock } from "lucide-react";
+import { PageHero21 } from "@/components/blocks/page-hero";
 import { ContactForm } from "@/components/ContactForm";
-import { Reveal } from "@/components/Reveal";
+import { LedgerAccordion } from "@/components/blocks/ledger-accordion";
+import { CTASection } from "@/components/blocks/cta-section";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -11,108 +12,153 @@ export const metadata: Metadata = {
     "Contact the NTA Group trading desk. UAE headquarters, commodity inquiry form and trading desk contact for fertilizer, energy and agri-commodity trade.",
 };
 
+const contactRows = [
+  {
+    icon: Building2,
+    label: "Headquarters",
+    value: (
+      <>
+        {site.address.line1}
+        <br />
+        {site.address.line2}
+        <br />
+        {site.address.city}, {site.address.country}
+      </>
+    ),
+  },
+  {
+    icon: Mail,
+    label: "Trading Desk",
+    value: (
+      <a
+        href={`mailto:${site.email}`}
+        className="transition-colors hover:text-accent-deep"
+      >
+        {site.email}
+      </a>
+    ),
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: (
+      <a
+        href={`tel:${site.phone.replace(/\s/g, "")}`}
+        className="transition-colors hover:text-accent-deep"
+      >
+        {site.phone}
+      </a>
+    ),
+  },
+  {
+    icon: Clock,
+    label: "Trading Hours",
+    value: "Sunday – Friday · 24/7 desk coverage",
+  },
+];
+
+const faq = [
+  {
+    id: "moq",
+    label: "What is your minimum order quantity?",
+    content:
+      "MOQ varies by commodity and grade — from full-container loads to bulk vessel parcels. Share your requirement and the desk will confirm what's workable.",
+  },
+  {
+    id: "incoterms",
+    label: "Which Incoterms do you trade on?",
+    content:
+      "We work across FOB, CFR and CIF, structured around your discharge port and logistics needs.",
+  },
+  {
+    id: "response",
+    label: "How quickly will I hear back?",
+    content:
+      "The trading desk responds to inquiries within one business day, with 24/7 coverage while a deal is live.",
+  },
+  {
+    id: "kyc",
+    label: "Do you require KYC and documentation?",
+    content:
+      "Yes — standard KYC and trade documentation apply to every counterparty, in line with international compliance practice.",
+  },
+  {
+    id: "coverage",
+    label: "Which markets do you cover?",
+    content:
+      "40+ destination markets across the GCC, Africa, India, Southeast Asia and Europe, run from our Dubai hub.",
+  },
+];
+
 export default function ContactPage() {
   return (
     <>
-      <PageHero
+      <PageHero21
         eyebrow="Contact"
-        title="Speak with our trading desk."
-        intro="Whether you're sourcing commodities or seeking a supply partnership, our team is ready to help. We respond within one business day."
-        image="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=2400&q=80"
+        title={
+          <>
+            Speak with our <span className="text-accent-deep">trading desk</span>.
+          </>
+        }
+        subtitle="Whether you're sourcing commodities or seeking a supply partnership, our team responds within one business day."
       />
 
-      <section className="container-px py-24 md:py-32">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
-          {/* Info side */}
-          <div className="lg:col-span-4">
-            <Reveal>
-              <h2 className="font-display text-3xl font-semibold text-white">
-                Let&apos;s build a trading partnership.
-              </h2>
-            </Reveal>
-
-            <div className="mt-10 space-y-7">
-              {[
-                {
-                  icon: Building2,
-                  label: "Headquarters",
-                  value: `${site.address.line1}, ${site.address.line2}, ${site.address.city}, ${site.address.country}`,
-                },
-                {
-                  icon: Mail,
-                  label: "Trading Desk",
-                  value: site.email,
-                  href: `mailto:${site.email}`,
-                },
-                {
-                  icon: Phone,
-                  label: "Phone",
-                  value: site.phone,
-                  href: `tel:${site.phone.replace(/\s/g, "")}`,
-                },
-                {
-                  icon: Clock,
-                  label: "Trading Hours",
-                  value: "Sunday – Friday · 24/7 desk coverage",
-                },
-              ].map((c, i) => (
-                <Reveal key={c.label} delay={i}>
-                  <div className="flex gap-4 border-t border-white/15 pt-6">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/15 bg-white/10 text-white">
-                      <c.icon className="h-5 w-5" strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-medium uppercase tracking-[0.14em] text-white/70">
-                        {c.label}
-                      </div>
-                      {c.href ? (
-                        <a
-                          href={c.href}
-                          className="mt-1 block text-[0.95rem] leading-relaxed text-white transition-colors hover:text-white"
-                        >
-                          {c.value}
-                        </a>
-                      ) : (
-                        <p className="mt-1 text-[0.95rem] leading-relaxed text-white">
-                          {c.value}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
+      {/* Reach the desk — methods grid */}
+      <section className="container-px py-16 md:py-20">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {contactRows.map((row) => (
+            <div
+              key={row.label}
+              className="rounded-xl border border-ink/10 bg-sand-50 p-6"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent-deep">
+                <row.icon className="h-5 w-5" strokeWidth={1.5} />
+              </div>
+              <div className="mt-5 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-sand-500">
+                {row.label}
+              </div>
+              <div className="mt-2 text-sm leading-relaxed text-ink">
+                {row.value}
+              </div>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <Reveal delay={2}>
-              <div className="mt-10 flex items-start gap-3 rounded-sm border border-white/15 bg-ink-900 p-5">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" strokeWidth={1.5} />
-                <p className="text-sm leading-relaxed text-white/80">
-                  Strategically located in Dubai — at the crossroads of European,
-                  Asian and African trade routes.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Form side */}
-          <div className="lg:col-span-8">
-            <Reveal delay={1}>
-              <div className="border border-line bg-white p-8 md:p-10">
-                <h3 className="font-display text-2xl font-semibold text-ink">
-                  Commodity Inquiry Form
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-charcoal-light">
-                  Share your requirement and our trading team will respond with
-                  availability, pricing and terms.
-                </p>
-                <div className="mt-8">
-                  <ContactForm />
-                </div>
-              </div>
-            </Reveal>
+      {/* Inquiry form — trading-desk panel */}
+      <section className="container-px pb-20 md:pb-24">
+        <div className="rounded-xl border border-ink/10 bg-sand-50 p-6 md:p-10">
+          <h2 className="font-display text-2xl font-semibold text-ink">
+            Commodity inquiry form
+          </h2>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-sand-500">
+            Share your requirement and our trading team will respond with
+            availability, pricing and terms.
+          </p>
+          <div className="mt-8">
+            <ContactForm />
           </div>
         </div>
       </section>
+
+      {/* Desk FAQ */}
+      <section className="border-t border-ink/10 bg-white">
+        <div className="container-px py-24 md:py-32">
+          <span className="eyebrow block">Desk FAQ</span>
+          <h2 className="mt-5 max-w-2xl text-display-md font-display font-semibold text-balance text-ink">
+            Answers before you ask.
+          </h2>
+          <div className="mt-12 max-w-3xl">
+            <LedgerAccordion items={faq} defaultValue="moq" />
+          </div>
+        </div>
+      </section>
+
+      <CTASection
+        badge={{ text: "Let's trade" }}
+        title="Explore what we trade."
+        action={{ text: "View commodities", href: "/commodities" }}
+      />
     </>
   );
 }

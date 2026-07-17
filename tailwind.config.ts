@@ -9,48 +9,72 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Pure-neutral monochrome palette, derived from the NTA Group logo.
-        // Brand gray = #707070 (sampled from the logo); all tones are true
-        // neutral (no cool/warm tint) so the whole site matches the mark.
-        // Meridian enterprise dark scale (zinc-family near-blacks).
+        // Trading-desk palette: warm near-blacks (tinted toward the brass
+        // accent) instead of zinc, so dark surfaces read like a desk at night
+        // rather than a SaaS default. Token names kept so all pages recolor.
         ink: {
-          DEFAULT: "#09090B",
-          900: "#18181B",
-          800: "#202024",
-          700: "#2A2A2E",
+          DEFAULT: "#0A0A09",
+          900: "#131311",
+          800: "#1C1B18",
+          700: "#262521",
         },
         charcoal: {
-          DEFAULT: "#3D3D3D",
-          light: "#545454",
-          muted: "#707070",
+          DEFAULT: "#3D3B36",
+          light: "#57544D",
+          muted: "#6E6A62",
         },
-        // Neutral-gray scale anchored on the logo's #707070 (sand-500).
-        // Token name kept as `sand` so existing utilities recolor automatically.
+        // Warm-gray ramp; sand-50 doubles as the "paper" light-section ground.
         sand: {
-          50: "#F5F5F5",
-          100: "#EBEBEB",
-          200: "#DCDCDC",
-          300: "#C2C2C2",
-          400: "#969696",
-          500: "#707070",
-          600: "#5E5E5E",
-          700: "#4A4A4A",
+          50: "#F4F2ED",
+          100: "#E9E6DF",
+          200: "#D8D4CB",
+          300: "#BDB8AD",
+          400: "#94908A",
+          500: "#6E6A62",
+          600: "#5A574F",
+          700: "#47443E",
         },
-        // Meridian accent system: a periwinkle blue as primary (legible as both
-        // fill-with-dark-text and text-on-near-black), with purple + emerald as
-        // supporting accents. `deep` is the on-white variant.
+        // ONE accent: brass. Legible as text on ink (9.1:1) and as a fill with
+        // ink text (9.1:1). `deep` is the on-paper/on-white variant (4.5:1).
         accent: {
-          DEFAULT: "#6D8BFF",
-          soft: "#8BA0FF",
-          deep: "#3B60F0",
+          DEFAULT: "#D9A84E",
+          soft: "#E3BA6E",
+          deep: "#8A6A1F",
+          foreground: "var(--accent-foreground)",
         },
-        accent2: { DEFAULT: "#8B5CF6" },
-        accent3: { DEFAULT: "#10B981" },
-        line: "#E3E3E3",
+        line: "#E3E0D8",
+        // shadcn/ui semantic tokens (mapped to the OKLCH vars in globals.css)
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        primary: { DEFAULT: "var(--primary)", foreground: "var(--primary-foreground)" },
+        secondary: { DEFAULT: "var(--secondary)", foreground: "var(--secondary-foreground)" },
+        destructive: { DEFAULT: "var(--destructive)", foreground: "var(--primary-foreground)" },
+        muted: { DEFAULT: "var(--muted)", foreground: "var(--muted-foreground)" },
+        popover: { DEFAULT: "var(--popover)", foreground: "var(--popover-foreground)" },
+        card: { DEFAULT: "var(--card)", foreground: "var(--card-foreground)" },
+        sidebar: {
+          DEFAULT: "var(--sidebar)",
+          foreground: "var(--sidebar-foreground)",
+          primary: "var(--sidebar-primary)",
+          "primary-foreground": "var(--sidebar-primary-foreground)",
+          accent: "var(--sidebar-accent)",
+          "accent-foreground": "var(--sidebar-accent-foreground)",
+          border: "var(--sidebar-border)",
+          ring: "var(--sidebar-ring)",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "var(--font-inter)", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       fontSize: {
         "display-xl": ["clamp(3rem, 7vw, 6.5rem)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
@@ -84,16 +108,26 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0)", opacity: "0.5" },
           "50%": { transform: "translateY(5px)", opacity: "1" },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         "slow-zoom": "slow-zoom 20s ease-out forwards",
         marquee: "marquee 40s linear infinite",
         "scroll-hint": "scroll-hint 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;

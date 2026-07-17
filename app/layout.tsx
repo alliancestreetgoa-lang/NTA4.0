@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Archivo } from "next/font/google";
+import { Inter, Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { site } from "@/lib/site";
+import { Navbar1 } from "@/components/blocks/shadcnblocks-com-navbar1";
+import { SiteFooter } from "@/components/SiteFooter";
+import { nav, site } from "@/lib/site";
+import { asset } from "@/lib/asset";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,6 +19,15 @@ const archivo = Archivo({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   variable: "--font-display",
+  display: "swap",
+});
+
+// Data face: cargo-manifest language — eyebrows, N-P-K grades, stats, route
+// tags all set in mono so figures read as trading data, not decoration.
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -86,15 +97,22 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
+    <html lang="en" className={cn(inter.variable, archivo.variable, plexMono.variable, "font-sans")}>
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Navbar />
+        <Navbar1
+          logo={{ url: "/", src: asset("/logo.png"), alt: "NTA Group", title: "NTA Group" }}
+          menu={nav.map((n) => ({ title: n.label, url: n.href }))}
+          auth={{
+            login: { text: "Commodities", url: "/commodities" },
+            signup: { text: "Contact Trading Team", url: "/contact" },
+          }}
+        />
         <main>{children}</main>
-        <Footer />
+        <SiteFooter />
       </body>
     </html>
   );

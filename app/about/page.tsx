@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Check } from "lucide-react";
-import { PageHero } from "@/components/PageHero";
-import { SectionHeading } from "@/components/SectionHeading";
-import { CTABand } from "@/components/CTABand";
-import { Reveal, RevealGroup } from "@/components/Reveal";
-import { asset } from "@/lib/asset";
+import {
+  Globe2,
+  ShieldCheck,
+  Network,
+  BadgeCheck,
+  Leaf,
+  Handshake,
+  type LucideIcon,
+} from "lucide-react";
+import { PageHero21 } from "@/components/blocks/page-hero";
+import { FeatureBento } from "@/components/blocks/feature-bento";
+import { StatLedger } from "@/components/blocks/stat-ledger";
+import { Milestones } from "@/components/blocks/milestones";
+import { CTASection } from "@/components/blocks/cta-section";
 import { aboutPoints } from "@/lib/data";
 import { site } from "@/lib/site";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "About",
@@ -15,111 +23,107 @@ export const metadata: Metadata = {
     "NTA Group is a UAE-based global commodity trading company with international market presence, a global sourcing network and a commitment to quality and sustainable partnerships.",
 };
 
+const aboutIcons: LucideIcon[] = [
+  Globe2,
+  Network,
+  ShieldCheck,
+  BadgeCheck,
+  Leaf,
+  Handshake,
+];
+
+// Phase-based trajectory (no invented dates — confirm real milestones with NTA).
+const milestones = [
+  {
+    phase: "Origins",
+    title: "A trading desk in the UAE",
+    description:
+      "NTA Group is founded in the United Arab Emirates — a commodity trading operation at the crossroads of global trade.",
+  },
+  {
+    phase: "Fertilizers",
+    title: "The flagship division",
+    description:
+      "We build our chemical-fertilizer business — nitrogen, phosphate and potash grades shipped with full documentation and specification sheets.",
+  },
+  {
+    phase: "Energy",
+    title: "Into energy & petrochemicals",
+    description:
+      "We expand into energy, oil and petrochemical trading, connecting Gulf producers with global demand.",
+  },
+  {
+    phase: "Agriculture",
+    title: "Grains & food security",
+    description:
+      "We add grains and cereals, supplying food-security markets across Africa and Asia.",
+  },
+  {
+    phase: "Today",
+    title: "Six divisions, 40+ markets",
+    description:
+      "A single accountable desk serving more than forty destination markets across five regions, from our Dubai hub.",
+  },
+];
+
+// One subject-matched image per aboutPoints card (vendored locally).
+const aboutImages = [
+  "/images/vendor/dubai-skyline-day.jpg", // UAE-Based Trading — Dubai skyline
+  "/world-trade-map.png", // International Market Presence — world trade map
+  "/images/about-trade.jpg", // Global Sourcing Network — container port
+  "/images/vendor/lab-quality.jpg", // Commitment to Quality — lab QC testing
+  "/fertilizers/flagship-plant.png", // Sustainable Partnerships — seedling in soil
+  "/images/vendor/handshake.jpg", // Long-Term Relationships — handshake
+];
+
 export default function AboutPage() {
   return (
     <>
-      <PageHero
+      <PageHero21
         eyebrow="About NTA Group"
-        title="Connecting global producers with the markets that need them."
-        intro="A UAE-based commodity trading company built on trust, expertise and an unwavering commitment to reliable global supply."
-        image="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&w=2400&q=80"
+        title={
+          <>
+            Connecting global producers with the{" "}
+            <span className="text-accent-deep">markets that need them</span>.
+          </>
+        }
+        subtitle={site.description}
+        primary={{ text: "Explore Commodities", href: "/commodities" }}
+        secondary={{ text: "Contact", href: "/contact" }}
       />
 
-      {/* Narrative */}
-      <section className="container-px py-24 md:py-32">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
-          <div className="lg:col-span-7">
-            <SectionHeading
-              title="A diversified global commodity trading company."
-            />
-            <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/70">
-              <Reveal>
-                <p>
-                  NTA Group is headquartered in the United Arab Emirates — a
-                  natural crossroads for global trade. From this strategic
-                  position, we trade and supply across three pillars: chemical
-                  fertilizers, energy, and agricultural commodities.
-                </p>
-              </Reveal>
-              <Reveal delay={1}>
-                <p>
-                  Our flagship division, Chemical Fertilizers, supplies the full
-                  spectrum of nitrogen, phosphate, potash and specialty
-                  fertilizers to agricultural markets worldwide. Alongside it,
-                  our energy, oil, petrochemicals and grains desks serve
-                  industrial and food markets across continents.
-                </p>
-              </Reveal>
-              <Reveal delay={2}>
-                <p>
-                  We exist to make global commodity flows dependable — matching
-                  reliable producers with the buyers, distributors and
-                  governments who depend on consistent, quality supply.
-                </p>
-              </Reveal>
-            </div>
-          </div>
+      {/* Proof by numbers — count-up ledger */}
+      <StatLedger
+        eyebrow="The desk in numbers"
+        items={site.stats.map((s) => ({ value: s.value, label: s.label }))}
+      />
 
-          <div className="lg:col-span-5">
-            <Reveal delay={1}>
-              <div className="relative aspect-[4/5] overflow-hidden">
-                <Image
-                  src={asset("/images/about-trade.jpg")}
-                  alt="Global trade and shipping"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                />
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      {/* Trajectory — milestones timeline */}
+      <Milestones
+        eyebrow="Our story"
+        title="From a Dubai trading desk to 40+ markets."
+        items={milestones}
+        className="border-t border-ink/10"
+      />
 
-      {/* Stats */}
-      <section className="border-y border-white/10 bg-ink text-white">
-        <div className="container-px py-16">
-          <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
-            {site.stats.map((s, i) => (
-              <Reveal key={s.label} delay={i}>
-                <div>
-                  <div className="font-display text-4xl font-semibold md:text-5xl">
-                    {s.value}
-                  </div>
-                  <div className="mt-2 text-sm text-white/70">{s.label}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeatureBento
+        badge="Who we are"
+        title="What defines us"
+        subtitle="A UAE-based commodity trading company built on trust, expertise and an unwavering commitment to reliable global supply."
+        items={aboutPoints.map((p, i) => ({
+          title: p.title,
+          description: p.desc,
+          icon: aboutIcons[i % aboutIcons.length],
+          image: asset(aboutImages[i % aboutImages.length]),
+          wide: i === 0,
+        }))}
+      />
 
-      {/* What defines us */}
-      <section className="container-px py-24 md:py-32">
-        <SectionHeading
-          title="Principles that guide every transaction."
-          align="center"
-        />
-        <RevealGroup className="mx-auto mt-16 grid max-w-5xl gap-x-12 gap-y-9 sm:grid-cols-2">
-          {aboutPoints.map((p) => (
-            <Reveal key={p.title}>
-              <div className="flex gap-4 border-t border-white/15 pt-6">
-                <Check className="mt-1 h-5 w-5 shrink-0 text-white" />
-                <div>
-                  <h3 className="font-display text-lg font-semibold text-white">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/70">
-                    {p.desc}
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </RevealGroup>
-      </section>
-
-      <CTABand />
+      <CTASection
+        badge={{ text: "Let's trade" }}
+        title="Partner with a trusted global trading company."
+        action={{ text: "Contact Trading Team", href: "/contact" }}
+      />
     </>
   );
 }

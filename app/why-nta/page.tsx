@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import {
   Globe2,
-  Truck,
   ShieldCheck,
-  LineChart,
+  BadgeCheck,
+  Brain,
   Handshake,
   Leaf,
+  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
-import { PageHero } from "@/components/PageHero";
-import { SectionHeading } from "@/components/SectionHeading";
-import { CTABand } from "@/components/CTABand";
-import { Reveal, RevealGroup } from "@/components/Reveal";
+import { PageHero21 } from "@/components/blocks/page-hero";
+import { FeatureBento } from "@/components/blocks/feature-bento";
+import { CTASection } from "@/components/blocks/cta-section";
 import { whyNta } from "@/lib/data";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "Why NTA Group",
@@ -22,79 +23,111 @@ export const metadata: Metadata = {
 
 const icons: LucideIcon[] = [
   Globe2,
-  Truck,
   ShieldCheck,
-  LineChart,
+  BadgeCheck,
+  Brain,
   Handshake,
   Leaf,
+];
+
+// One subject-matched image per whyNta card (vendored locally).
+const whyImages = [
+  "/world-trade-map.png", // Global Network — world trade map
+  "/images/vendor/container-port.jpg", // Trusted Supply Chain — container port
+  "/images/vendor/lab-quality.jpg", // Quality Assurance — lab QC testing
+  "/images/vendor/market-data.jpg", // Market Expertise — market data screens
+  "/images/vendor/handshake.jpg", // Strategic Partnerships — handshake
+  "/fertilizers/flagship-plant.png", // Sustainable Growth — seedling in soil
+];
+
+const steps = [
+  {
+    number: "01",
+    title: "Source",
+    desc: "We identify reliable origins and vetted producers across global markets.",
+  },
+  {
+    number: "02",
+    title: "Contract",
+    desc: "We negotiate terms, structure trade finance and secure the deal.",
+  },
+  {
+    number: "03",
+    title: "Ship",
+    desc: "We coordinate freight, inspection and documentation end to end.",
+  },
+  {
+    number: "04",
+    title: "Deliver",
+    desc: "We complete on-time, quality-assured delivery to your market.",
+  },
 ];
 
 export default function WhyNtaPage() {
   return (
     <>
-      <PageHero
+      <PageHero21
         eyebrow="Why NTA Group"
-        title="The trusted choice for global commodity trade."
-        intro="Six reasons producers, distributors and institutions partner with NTA Group for reliable, large-scale commodity supply."
-        image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80"
+        title={
+          <>
+            The <span className="text-accent-deep">trusted choice</span> for global
+            commodity trade.
+          </>
+        }
+        subtitle="A global network, a disciplined supply chain and deep market expertise — the advantages producers, distributors and institutions rely on."
+        primary={{ text: "Explore Commodities", href: "/commodities" }}
+        secondary={{ text: "About us", href: "/about" }}
       />
 
-      <section className="container-px py-24 md:py-32">
-        <RevealGroup className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {whyNta.map((item, i) => {
-            const Icon = icons[i];
-            return (
-              <Reveal key={item.title}>
-                <div className="group flex h-full flex-col border-t-2 border-line bg-white p-8 transition-colors duration-500 hover:border-sand-400">
-                  <div className="flex h-14 w-14 items-center justify-center border border-line bg-sand-50 text-ink transition-colors duration-500 group-hover:bg-ink group-hover:text-white">
-                    <Icon className="h-6 w-6" strokeWidth={1.4} />
-                  </div>
-                  <h3 className="mt-7 font-display text-2xl font-semibold text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-[0.95rem] leading-relaxed text-charcoal-light">
-                    {item.desc}
-                  </p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </RevealGroup>
-      </section>
+      <FeatureBento
+        badge="Why NTA"
+        title="The advantages of a trusted global partner"
+        subtitle="Six reasons partners choose NTA Group for reliable, large-scale commodity supply."
+        items={whyNta.map((item, i) => ({
+          title: item.title,
+          description: item.desc,
+          icon: icons[i],
+          image: asset(whyImages[i % whyImages.length]),
+          wide: i === 0,
+        }))}
+      />
 
-      {/* Process band */}
-      <section className="border-y border-white/10 bg-ink-900">
+      {/* Process rail — how a trade moves through the desk */}
+      <section className="border-t border-ink/10 bg-white">
         <div className="container-px py-24 md:py-32">
-          <SectionHeading
-            title="A disciplined approach to every trade."
-            align="center"
-          />
-          <RevealGroup className="mt-16 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-4">
-            {[
-              { step: "01", title: "Source", desc: "Identify reliable origins and producers worldwide." },
-              { step: "02", title: "Structure", desc: "Negotiate, contract and structure trade finance." },
-              { step: "03", title: "Logistics", desc: "Coordinate freight, inspection and documentation." },
-              { step: "04", title: "Deliver", desc: "On-time, quality-assured delivery to market." },
-            ].map((s) => (
-              <Reveal key={s.step} className="bg-white">
-                <div className="h-full bg-white p-8">
-                  <span className="font-display text-3xl font-semibold text-sand-300">
-                    {s.step}
+          <span className="eyebrow block">How we trade</span>
+          <h2 className="mt-5 max-w-2xl text-display-md font-display font-semibold text-balance text-ink">
+            Four steps, one accountable desk.
+          </h2>
+          <div className="mt-14 grid gap-px overflow-hidden rounded-xl border border-ink/10 bg-ink/10 md:grid-cols-4">
+            {steps.map((s, i) => (
+              <div key={s.number} className="bg-white p-7 md:p-8">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-3xl font-semibold text-accent-deep">
+                    {s.number}
                   </span>
-                  <h3 className="mt-4 font-display text-lg font-semibold text-ink">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-charcoal-light">
-                    {s.desc}
-                  </p>
+                  {i < steps.length - 1 && (
+                    <ArrowRight className="hidden h-4 w-4 text-ink/25 md:block" />
+                  )}
                 </div>
-              </Reveal>
+                <h3 className="mt-6 font-display text-lg font-semibold text-ink">
+                  {s.title}
+                </h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-sand-500">
+                  {s.desc}
+                </p>
+              </div>
             ))}
-          </RevealGroup>
+          </div>
         </div>
       </section>
 
-      <CTABand />
+      <CTASection
+        badge={{ text: "Why NTA" }}
+        title="A partner built on trust."
+        description="Speak with our trading desk about your sourcing, supply and logistics needs."
+        action={{ text: "Contact Trading Team", href: "/contact" }}
+      />
     </>
   );
 }
