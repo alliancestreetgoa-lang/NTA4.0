@@ -41,7 +41,7 @@ export function HowWeWork() {
           {/* Right: numbered reasons — cols 5–12 */}
           <RevealGroup className="lg:col-span-8">
             {whyNta.slice(0, 3).map((item, i) => (
-              <Reveal key={item.title}>
+              <Reveal key={item.title} delay={i}>
                 <div className="grid gap-x-6 gap-y-2 border-t border-[#D8D4CB] py-7 sm:grid-cols-[3.5rem_minmax(0,16rem)_1fr] md:py-8">
                   <span className="font-mono text-sm text-[#8A6A1F]">
                     0{i + 1}
@@ -56,25 +56,28 @@ export function HowWeWork() {
               </Reveal>
             ))}
 
-            {/* Service lines */}
-            <Reveal>
-              <div className="border-t border-[#D8D4CB] pt-8">
+            {/* Service lines — label and items reveal individually so nothing
+                animates twice (an outer Reveal would fade the opacity again). */}
+            <div className="border-t border-[#D8D4CB] pt-8">
+              <Reveal>
                 <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-[#57544D]">
                   Services across the value chain
                 </p>
-                <ul className="mt-5 grid gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {services.slice(0, 6).map((s) => (
-                    <li
-                      key={s.title}
-                      className="flex items-center gap-3 text-sm font-medium"
-                    >
-                      <span aria-hidden className="h-px w-4 shrink-0 bg-[#8A6A1F]" />
-                      {s.title}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
+              </Reveal>
+              <ul className="mt-5 grid gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+                {services.slice(0, 6).map((s, i) => (
+                  <Reveal
+                    as="li"
+                    key={s.title}
+                    delay={i + 1}
+                    className="flex items-center gap-3 text-sm font-medium"
+                  >
+                    <span aria-hidden className="h-px w-4 shrink-0 bg-[#8A6A1F]" />
+                    {s.title}
+                  </Reveal>
+                ))}
+              </ul>
+            </div>
           </RevealGroup>
         </div>
       </div>

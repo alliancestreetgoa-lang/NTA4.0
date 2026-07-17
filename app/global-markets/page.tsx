@@ -5,6 +5,7 @@ import { FeatureBento } from "@/components/blocks/feature-bento";
 import { StatLedger } from "@/components/blocks/stat-ledger";
 import { CTASection } from "@/components/blocks/cta-section";
 import { GlobalMap } from "@/components/GlobalMap";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { markets } from "@/lib/data";
 import { asset } from "@/lib/asset";
 
@@ -63,12 +64,14 @@ export default function GlobalMarketsPage() {
 
       <section className="border-t">
         <div className="container mx-auto px-4 py-16 md:py-24">
-          <h2 className="max-w-2xl text-3xl font-semibold md:text-5xl">
-            Six key regions. One connected network.
-          </h2>
-          <div className="mt-12">
+          <Reveal>
+            <h2 className="max-w-2xl text-3xl font-semibold md:text-5xl">
+              Six key regions. One connected network.
+            </h2>
+          </Reveal>
+          <Reveal delay={1} className="mt-12">
             <GlobalMap />
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -86,40 +89,44 @@ export default function GlobalMarketsPage() {
       {/* Trade corridors — sharp manifest ledger */}
       <section className="bg-sand-50">
         <div className="container-px py-24 md:py-32">
-          <span className="eyebrow block">Trade corridors</span>
-          <h2 className="mt-5 max-w-2xl text-display-md font-display font-semibold text-balance text-ink">
-            The lanes we run, origin to destination.
-          </h2>
+          <Reveal>
+            <span className="eyebrow block">Trade corridors</span>
+            <h2 className="mt-5 max-w-2xl text-display-md font-display font-semibold text-balance text-ink">
+              The lanes we run, origin to destination.
+            </h2>
+          </Reveal>
           <div className="mt-12 overflow-x-auto">
-            <div className="min-w-[640px]">
-              <div className="grid grid-cols-[1.2fr_1.2fr_1.4fr_1fr] gap-4 border-b border-ink/12 pb-3 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-sand-500">
+            <RevealGroup className="min-w-[640px]">
+              <RevealItem className="grid grid-cols-[1.2fr_1.2fr_1.4fr_1fr] gap-4 border-b border-ink/12 pb-3 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-sand-500">
                 <span>Origin</span>
                 <span>Destination</span>
                 <span>Commodities</span>
                 <span>Mode</span>
-              </div>
+              </RevealItem>
               {corridors.map((c, i) => (
-                <div
+                <RevealItem
                   key={`${c.from}-${c.to}`}
-                  className="group grid grid-cols-[1.2fr_1.2fr_1.4fr_1fr] items-center gap-4 border-b border-ink/10 py-5 transition-colors hover:bg-ink/[0.03]"
+                  className="group grid grid-cols-[1.2fr_1.2fr_1.4fr_1fr] items-center gap-4 border-b border-ink/10 py-5 transition-colors duration-300 hover:border-accent/40 hover:bg-ink/[0.04]"
                 >
-                  <span className="font-mono text-xs text-sand-500">
+                  <span className="font-mono text-xs text-sand-500 transition-colors duration-300 group-hover:text-accent-deep">
                     {String(i + 1).padStart(2, "0")}
                     <span className="ml-3 font-display text-base font-semibold text-ink">
                       {c.from}
                     </span>
                   </span>
                   <span className="font-display text-base font-semibold text-ink">
-                    <span className="mr-2 text-accent-deep">→</span>
+                    <span className="mr-2 inline-block text-accent-deep transition-transform duration-300 group-hover:translate-x-0.5">
+                      →
+                    </span>
                     {c.to}
                   </span>
                   <span className="text-sm text-sand-500">{c.cargo}</span>
                   <span className="font-mono text-[0.7rem] uppercase tracking-[0.1em] text-ink/70">
                     {c.mode}
                   </span>
-                </div>
+                </RevealItem>
               ))}
-            </div>
+            </RevealGroup>
           </div>
           <p className="mt-6 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-sand-500">
             Representative corridors

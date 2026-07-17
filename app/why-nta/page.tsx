@@ -12,6 +12,7 @@ import {
 import { PageHero21 } from "@/components/blocks/page-hero";
 import { FeatureBento } from "@/components/blocks/feature-bento";
 import { CTASection } from "@/components/blocks/cta-section";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { whyNta } from "@/lib/data";
 import { asset } from "@/lib/asset";
 
@@ -95,30 +96,37 @@ export default function WhyNtaPage() {
       {/* Process rail — how a trade moves through the desk */}
       <section className="border-t border-ink/10 bg-white">
         <div className="container-px py-24 md:py-32">
-          <span className="eyebrow block">How we trade</span>
-          <h2 className="mt-5 max-w-2xl text-display-md font-display font-semibold text-balance text-ink">
-            Four steps, one accountable desk.
-          </h2>
-          <div className="mt-14 grid gap-px overflow-hidden rounded-xl border border-ink/10 bg-ink/10 md:grid-cols-4">
+          <Reveal>
+            <span className="eyebrow block">How we trade</span>
+            <h2 className="mt-5 max-w-2xl text-display-md font-display font-semibold text-balance text-ink">
+              Four steps, one accountable desk.
+            </h2>
+          </Reveal>
+          <RevealGroup className="mt-14 grid gap-px overflow-hidden rounded-xl border border-ink/10 bg-ink/10 md:grid-cols-4">
             {steps.map((s, i) => (
-              <div key={s.number} className="bg-white p-7 md:p-8">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-3xl font-semibold text-accent-deep">
-                    {s.number}
-                  </span>
-                  {i < steps.length - 1 && (
-                    <ArrowRight className="hidden h-4 w-4 text-ink/25 md:block" />
-                  )}
-                </div>
-                <h3 className="mt-6 font-display text-lg font-semibold text-ink">
-                  {s.title}
-                </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-sand-500">
-                  {s.desc}
-                </p>
+              <div
+                key={s.number}
+                className="group bg-white p-7 transition-colors duration-300 hover:bg-sand-50 md:p-8"
+              >
+                <RevealItem>
+                  <div className="flex items-center justify-between">
+                    <span className="inline-block font-mono text-3xl font-semibold text-accent-deep transition-transform duration-300 ease-out group-hover:-translate-y-0.5 motion-reduce:transform-none motion-reduce:transition-none">
+                      {s.number}
+                    </span>
+                    {i < steps.length - 1 && (
+                      <ArrowRight className="hidden h-4 w-4 text-ink/25 transition-colors duration-300 group-hover:text-accent-deep md:block motion-reduce:transition-none" />
+                    )}
+                  </div>
+                  <h3 className="mt-6 font-display text-lg font-semibold text-ink">
+                    {s.title}
+                  </h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-sand-500">
+                    {s.desc}
+                  </p>
+                </RevealItem>
               </div>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 

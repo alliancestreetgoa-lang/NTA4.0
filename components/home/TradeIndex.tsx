@@ -85,12 +85,17 @@ export function TradeIndex() {
         {/* Index of the remaining divisions — cargo-manifest rows */}
         <RevealGroup className="mt-6 border-t border-ink/10">
           {rest.map((d, i) => (
-            <Reveal key={d.slug}>
+            <Reveal key={d.slug} delay={i}>
               <Link
                 href={`/commodities#${d.slug}`}
-                className="group grid items-baseline gap-x-6 gap-y-1 border-b border-ink/10 py-5 transition-colors duration-300 hover:bg-ink/[0.03] sm:grid-cols-[3rem_minmax(0,18rem)_1fr_auto] sm:py-6"
+                className="group relative grid items-baseline gap-x-6 gap-y-1 border-b border-ink/10 py-5 transition-colors duration-300 hover:bg-accent/[0.06] sm:grid-cols-[3rem_minmax(0,18rem)_1fr_auto] sm:py-6"
               >
-                <span className="font-mono text-xs text-ink/60">
+                {/* Ledger rule that draws down the row edge on hover. */}
+                <span
+                  aria-hidden
+                  className="absolute inset-y-0 left-0 w-px bg-accent opacity-0 transition-opacity duration-300 ease-premium group-hover:opacity-100 motion-reduce:transition-none"
+                />
+                <span className="font-mono text-xs text-ink/60 transition-colors duration-300 group-hover:text-accent-deep">
                   0{i + 2}
                 </span>
                 <h3 className="font-display text-lg font-semibold text-ink md:text-xl">
@@ -99,7 +104,7 @@ export function TradeIndex() {
                 <p className="text-sm leading-relaxed text-sand-500 sm:truncate">
                   {d.short}
                 </p>
-                <ArrowUpRight className="hidden h-4 w-4 text-ink/35 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent sm:block" />
+                <ArrowUpRight className="hidden h-4 w-4 text-ink/35 transition-all duration-300 group-hover:text-accent motion-safe:group-hover:translate-x-1 motion-safe:group-hover:-translate-y-1 sm:block" />
               </Link>
             </Reveal>
           ))}

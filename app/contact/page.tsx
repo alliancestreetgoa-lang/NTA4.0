@@ -4,6 +4,7 @@ import { PageHero21 } from "@/components/blocks/page-hero";
 import { ContactForm } from "@/components/ContactForm";
 import { LedgerAccordion } from "@/components/blocks/ledger-accordion";
 import { CTASection } from "@/components/blocks/cta-section";
+import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -106,28 +107,29 @@ export default function ContactPage() {
       {/* Reach the desk — methods grid */}
       <section className="container-px py-16 md:py-20">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {contactRows.map((row) => (
-            <div
-              key={row.label}
-              className="rounded-xl border border-ink/10 bg-sand-50 p-6"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent-deep">
-                <row.icon className="h-5 w-5" strokeWidth={1.5} />
+          {contactRows.map((row, i) => (
+            // Reveal owns the entry transform; the inner card owns the hover
+            // transform, so framer's inline transform never fights the CSS one.
+            <Reveal key={row.label} delay={i} className="h-full">
+              <div className="group h-full rounded-xl border border-ink/10 bg-sand-50 p-6 transition-colors duration-300 hover:border-accent/40 hover:bg-white motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-1">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent-deep transition-colors duration-300 group-hover:bg-accent/20 motion-safe:transition-all motion-safe:duration-300 motion-safe:group-hover:scale-105">
+                  <row.icon className="h-5 w-5" strokeWidth={1.5} />
+                </div>
+                <div className="mt-5 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-sand-500">
+                  {row.label}
+                </div>
+                <div className="mt-2 text-sm leading-relaxed text-ink">
+                  {row.value}
+                </div>
               </div>
-              <div className="mt-5 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-sand-500">
-                {row.label}
-              </div>
-              <div className="mt-2 text-sm leading-relaxed text-ink">
-                {row.value}
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* Inquiry form — trading-desk panel */}
       <section className="container-px pb-20 md:pb-24">
-        <div className="rounded-xl border border-ink/10 bg-sand-50 p-6 md:p-10">
+        <Reveal className="rounded-xl border border-ink/10 bg-sand-50 p-6 md:p-10">
           <h2 className="font-display text-2xl font-semibold text-ink">
             Commodity inquiry form
           </h2>
@@ -138,19 +140,21 @@ export default function ContactPage() {
           <div className="mt-8">
             <ContactForm />
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Desk FAQ */}
       <section className="border-t border-ink/10 bg-white">
         <div className="container-px py-24 md:py-32">
-          <span className="eyebrow block">Desk FAQ</span>
+          <Reveal as="span" className="eyebrow block">
+            Desk FAQ
+          </Reveal>
           <h2 className="mt-5 max-w-2xl text-display-md font-display font-semibold text-balance text-ink">
             Answers before you ask.
           </h2>
-          <div className="mt-12 max-w-3xl">
+          <Reveal delay={1} className="mt-12 max-w-3xl">
             <LedgerAccordion items={faq} defaultValue="moq" />
-          </div>
+          </Reveal>
         </div>
       </section>
 
