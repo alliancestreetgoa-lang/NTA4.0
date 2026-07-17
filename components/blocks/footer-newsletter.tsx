@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, type FC, type ReactNode } from "react";
+import Link from "next/link";
 import { clsx } from "clsx";
 
 const cn = (...inputs: Parameters<typeof clsx>) => clsx(...inputs);
@@ -57,9 +58,9 @@ export const Footer: FC<FooterProps> = ({
           <ul className="space-y-2">
             {usefulLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -33,7 +34,7 @@ export function SlideTabs({ items }: { items: Item[] }) {
         const active = norm(item.url) === current;
         return (
           <Tab key={item.title} setPosition={setPosition}>
-            <a
+            <Link
               href={item.url}
               aria-current={active ? "page" : undefined}
               className={cn(
@@ -42,7 +43,7 @@ export function SlideTabs({ items }: { items: Item[] }) {
               )}
             >
               {item.title}
-            </a>
+            </Link>
           </Tab>
         );
       })}

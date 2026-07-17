@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TextReveal } from "@/components/ui/text-reveal";
 
@@ -41,12 +42,12 @@ export function PageHero21({
           <div className="flex flex-wrap justify-center gap-3">
             {primary && (
               <Button size="lg" asChild>
-                <a href={primary.href}>{primary.text}</a>
+                <Link href={primary.href}>{primary.text}</Link>
               </Button>
             )}
             {secondary && (
               <Button size="lg" variant="outline" asChild>
-                <a href={secondary.href}>{secondary.text}</a>
+                <Link href={secondary.href}>{secondary.text}</Link>
               </Button>
             )}
           </div>
