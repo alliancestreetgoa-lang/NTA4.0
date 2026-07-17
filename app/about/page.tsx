@@ -12,6 +12,7 @@ import { PageHero21 } from "@/components/blocks/page-hero";
 import { FeatureBento } from "@/components/blocks/feature-bento";
 import { StatLedger } from "@/components/blocks/stat-ledger";
 import { Milestones } from "@/components/blocks/milestones";
+import { StatementParallax } from "@/components/blocks/statement-parallax";
 import { CTASection } from "@/components/blocks/cta-section";
 import { aboutPoints } from "@/lib/data";
 import { site } from "@/lib/site";
@@ -104,6 +105,13 @@ export default function AboutPage() {
         title="From a Dubai trading desk to 40+ markets."
         items={milestones}
         className="border-t border-ink/10"
+      />
+
+      {/* Statement break — sticky-image scroll narrative */}
+      <StatementParallax
+        image="/images/vendor/container-port.jpg"
+        subheading="How we operate"
+        heading="One desk. Every shipment, accounted for."
       />
 
       <FeatureBento

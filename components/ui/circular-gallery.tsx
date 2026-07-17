@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +34,7 @@ export function CircularGallery({
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
 
+  const reduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
   const pausedRef = useRef(false);
@@ -192,73 +194,85 @@ export function CircularGallery({
       </div>
 
       {mounted &&
-        open &&
         createPortal(
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${open.title} specification sheet`}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/92 p-4 backdrop-blur-sm sm:p-8"
-            onClick={() => setOpenIndex(null)}
-          >
-            <button
-              type="button"
-              aria-label="Close"
-              onClick={() => setOpenIndex(null)}
-              className="absolute right-4 top-4 grid h-11 w-11 place-content-center rounded-full border border-white/15 bg-ink/70 text-white transition-colors hover:bg-white hover:text-ink"
-            >
-              <X className="h-5 w-5" />
-            </button>
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                key="lightbox"
+                role="dialog"
+                aria-modal="true"
+                aria-label={`${open.title} specification sheet`}
+                className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/92 p-4 backdrop-blur-sm sm:p-8"
+                onClick={() => setOpenIndex(null)}
+                initial={reduceMotion ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={reduceMotion ? undefined : { opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <button
+                  type="button"
+                  aria-label="Close"
+                  onClick={() => setOpenIndex(null)}
+                  className="absolute right-4 top-4 grid h-11 w-11 place-content-center rounded-full border border-white/15 bg-ink/70 text-white transition-colors hover:bg-white hover:text-ink"
+                >
+                  <X className="h-5 w-5" />
+                </button>
 
-            <button
-              type="button"
-              aria-label="Previous"
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpenIndex((i) =>
-                  i === null ? i : (i - 1 + items.length) % items.length
-                );
-              }}
-              className="absolute left-3 top-1/2 grid h-11 w-11 -translate-y-1/2 place-content-center rounded-full border border-white/15 bg-ink/70 text-white transition-colors hover:bg-white hover:text-ink sm:left-6"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next"
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpenIndex((i) =>
-                  i === null ? i : (i + 1) % items.length
-                );
-              }}
-              className="absolute right-3 top-1/2 grid h-11 w-11 -translate-y-1/2 place-content-center rounded-full border border-white/15 bg-ink/70 text-white transition-colors hover:bg-white hover:text-ink sm:right-6"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
+                <button
+                  type="button"
+                  aria-label="Previous"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setOpenIndex((i) =>
+                      i === null ? i : (i - 1 + items.length) % items.length
+                    );
+                  }}
+                  className="absolute left-3 top-1/2 grid h-11 w-11 -translate-y-1/2 place-content-center rounded-full border border-white/15 bg-ink/70 text-white transition-colors hover:bg-white hover:text-ink sm:left-6"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setOpenIndex((i) =>
+                      i === null ? i : (i + 1) % items.length
+                    );
+                  }}
+                  className="absolute right-3 top-1/2 grid h-11 w-11 -translate-y-1/2 place-content-center rounded-full border border-white/15 bg-ink/70 text-white transition-colors hover:bg-white hover:text-ink sm:right-6"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
 
-            <figure
-              className="flex max-h-full flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={open.imageUrl}
-                alt={`${open.title} specification sheet`}
-                className="max-h-[86vh] w-auto max-w-full rounded-xl border border-white/10 shadow-2xl"
-              />
-              <figcaption className="mt-4 text-center">
-                <span className="font-display text-lg font-semibold text-white">
-                  {open.title}
-                </span>
-                {open.subtitle && (
-                  <span className="ml-3 font-mono text-sm text-accent">
-                    {open.subtitle}
-                  </span>
-                )}
-              </figcaption>
-            </figure>
-          </div>,
+                <motion.figure
+                  className="flex max-h-full flex-col items-center"
+                  onClick={(e) => e.stopPropagation()}
+                  initial={reduceMotion ? false : { opacity: 0, scale: 0.94, y: 12 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={reduceMotion ? undefined : { opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={open.imageUrl}
+                    alt={`${open.title} specification sheet`}
+                    className="max-h-[86vh] w-auto max-w-full rounded-xl border border-white/10 shadow-2xl"
+                  />
+                  <figcaption className="mt-4 text-center">
+                    <span className="font-display text-lg font-semibold text-white">
+                      {open.title}
+                    </span>
+                    {open.subtitle && (
+                      <span className="ml-3 font-mono text-sm text-accent">
+                        {open.subtitle}
+                      </span>
+                    )}
+                  </figcaption>
+                </motion.figure>
+              </motion.div>
+            )}
+          </AnimatePresence>,
           document.body
         )}
     </>
