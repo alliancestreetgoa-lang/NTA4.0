@@ -6,9 +6,11 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { type Variants } from "framer-motion";
 import { TimelineContent } from "@/components/ui/timeline-animation";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { divisions } from "@/lib/data";
 import { site } from "@/lib/site";
 import { asset } from "@/lib/asset";
+import { cn } from "@/lib/utils";
 
 // Blur-in reveal, staggered by animationNum (see TimelineContent).
 const reveal: Variants = {
@@ -40,6 +42,20 @@ export function HeroBlocks() {
       ref={heroRef}
       className="relative overflow-hidden border-b border-ink/10 bg-white"
     >
+      {/* faint technical grid — fades out toward the bottom of the hero */}
+      <AnimatedGridPattern
+        numSquares={24}
+        maxOpacity={0.7}
+        duration={4}
+        repeatDelay={1}
+        width={44}
+        height={44}
+        className={cn(
+          "z-0 [mask-image:linear-gradient(to_bottom,#000_0%,#000_35%,transparent_80%)]",
+          "[-webkit-mask-image:linear-gradient(to_bottom,#000_0%,#000_35%,transparent_80%)]",
+        )}
+      />
+
       {/* faint world-map wash */}
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[70%]">
         <Image

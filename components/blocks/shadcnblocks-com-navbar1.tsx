@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { SlideTabs } from "@/components/ui/slide-tabs";
 import {
   Sheet,
@@ -66,7 +67,11 @@ const Navbar1 = ({
   },
 }: Navbar1Props) => {
   return (
-    <section className="py-4">
+    <section className="relative py-4">
+      {/* Reading progress, flush on the header's bottom hairline. `top-full`
+          anchors it to the section's bottom edge so it never overlaps the nav
+          links; it renders nothing when the viewer prefers reduced motion. */}
+      <ScrollProgress className="absolute left-0 right-0 top-full z-50 h-[2px] origin-left" />
       <div className="container">
         {/* Desktop nav needs ~1100px (7 items + 2 buttons); below xl use the sheet. */}
         <nav className="hidden justify-between xl:flex">

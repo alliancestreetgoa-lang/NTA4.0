@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { ParallaxMedia } from "@/components/ui/parallax-media";
 import { divisions } from "@/lib/data";
 import { asset } from "@/lib/asset";
 import { cn } from "@/lib/utils";
@@ -86,7 +87,7 @@ export function DivisionExplorer() {
             </Link>
           </div>
 
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
+          <ParallaxMedia className="aspect-[4/3] border border-white/10">
             <Image
               key={current.slug}
               src={asset(current.image)}
@@ -99,7 +100,7 @@ export function DivisionExplorer() {
               aria-hidden
               className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent"
             />
-          </div>
+          </ParallaxMedia>
         </div>
       </div>
     </section>

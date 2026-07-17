@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { cn } from "@/lib/utils";
 
 interface CTAProps {
@@ -24,9 +24,7 @@ export function CTASection({ badge, title, description, action, className }: CTA
         {description && (
           <p className="text-muted-foreground max-w-xl">{description}</p>
         )}
-        <Button size="lg" asChild>
-          <a href={action.href}>{action.text}</a>
-        </Button>
+        <InteractiveHoverButton href={action.href} text={action.text} />
       </div>
     </section>
   );

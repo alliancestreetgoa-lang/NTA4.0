@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { Magnetic } from "@/components/ui/magnetic";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { site } from "@/lib/site";
 
 export function CTABand() {
@@ -26,10 +26,12 @@ export function CTABand() {
           </div>
           <div className="lg:col-span-4 lg:justify-self-end">
             <Reveal delay={3}>
-              <Link href="/contact" className="btn-primary group">
-                Contact the trading desk
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
+              <Magnetic intensity={0.35} range={140} className="inline-block">
+                <InteractiveHoverButton
+                  href="/contact"
+                  text="Contact the trading desk"
+                />
+              </Magnetic>
               <div className="mt-7 space-y-2 font-mono text-xs tracking-[0.06em] text-sand-500">
                 <a
                   href={`mailto:${site.email}`}

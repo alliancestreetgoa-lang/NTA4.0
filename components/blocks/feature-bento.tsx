@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { cn } from "@/lib/utils";
 
 export interface BentoItem {
@@ -52,7 +53,7 @@ export function FeatureBento({
             {items.map((it, i) => {
               const Icon = it.icon;
               return (
-                <div
+                <SpotlightCard
                   key={i}
                   className={cn(
                     "group relative overflow-hidden bg-muted rounded-xl p-6 flex justify-between flex-col aspect-square",
@@ -99,7 +100,7 @@ export function FeatureBento({
                       {it.description}
                     </p>
                   </div>
-                </div>
+                </SpotlightCard>
               );
             })}
           </div>

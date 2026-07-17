@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { TextReveal } from "@/components/ui/text-reveal";
 
 /** Server-friendly page hero (link-based CTAs) built from shadcn tokens. */
 export function PageHero21({
@@ -22,9 +23,17 @@ export function PageHero21({
             {eyebrow}
           </span>
         )}
-        <h1 className="max-w-4xl text-4xl font-extrabold tracking-tighter text-balance md:text-6xl">
+        {/* title is ReactNode: plain strings reveal word-by-word, JSX
+            (e.g. an accent <span>) falls back to a whole-block fade. */}
+        <TextReveal
+          as="h1"
+          className="max-w-4xl text-4xl font-extrabold tracking-tighter text-balance md:text-6xl"
+          per="word"
+          preset="fade-in-blur"
+          speedReveal={1.2}
+        >
           {title}
-        </h1>
+        </TextReveal>
         {subtitle && (
           <p className="max-w-2xl text-lg text-muted-foreground md:text-xl">{subtitle}</p>
         )}
